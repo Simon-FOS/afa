@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Augustinian Federation for Africa (AFA) | Home</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Page-specific styles */
+        :root {
+            --font-primary: 'Open Sans', sans-serif;
+            --font-secondary: 'Merriweather', serif;
+        }
+
+        body {
+            font-family: var(--font-primary);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-secondary);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="static/images/logo1.png" alt="Augustinian Federation for Africa" class="logo-img">
+                    <span class="logo-text">
+                        <span class="logo-main">AUGUSTINIAN FEDERATION</span>
+                        <span class="logo-sub">FOR AFRICA</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggle" id="navbarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="executive-board.html">Executive Board</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" class="btn btn-secondary">Donate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Image Slideshow Container -->
+        <div class="hero-slideshow">
+            <div class="slide active" style="background-image: url('static/images/afa1.jpg');"></div>
+            <div class="slide" style="background-image: url('static/images/afa2.jpg');"></div>
+            <div class="slide" style="background-image: url('static/images/afa3.jpg');"></div>
+            <div class="slide" style="background-image: url('static/images/afa4.jpg');"></div>
+
+            <!-- Optional: Slide Indicators/Dots -->
+            <div class="slide-indicators">
+                <button class="indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+                <button class="indicator" data-slide="1" aria-label="Go to slide 2"></button>
+                <button class="indicator" data-slide="2" aria-label="Go to slide 3"></button>
+                <button class="indicator" data-slide="3" aria-label="Go to slide 4"></button>
+            </div>
+
+            <!-- Optional: Navigation Arrows -->
+            <button class="slide-nav prev" aria-label="Previous image">&#10094;</button>
+            <button class="slide-nav next" aria-label="Next image">&#10095;</button>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Augustinian Federation for Africa</h1>
+                <p class="hero-subtitle">Uniting Augustinian communities across the African continent in faith, service,
+                    and solidarity</p>
+                <div class="hero-buttons">
+                    <a href="about.html" class="btn btn-primary">Learn More</a>
+                    <a href="events.html" class="btn btn-outline">Upcoming Events</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-overlay"></div>
+    </section>
+
+    <!-- Mission Statement -->
+    <section class="section mission-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="section-title">Our Mission</h2>
+                    <p class="mission-text">
+                        To build a network of members of the Augustinian Family on the continent of Africa. To promote
+                        the spirituality and teachings of St Augustine through shared ideas, missionary activities,
+                        programmes and healthy collaboration among members in the continent of Africa.
+                    </p>
+                    <p class="mission-text">
+                        Guided by the teachings of St. Augustine, we work to address contemporary challenges facing our
+                        communities while preserving our rich spiritual heritage.
+                    </p>
+                    <a href="about.html" class="btn btn-primary">Read Our Story</a>
+                </div>
+                <div class="col-md-6">
+                    <div class="mission-image-wrapper">
+                        <img src="static/images/mission.jpg" alt="Augustinian Mission in Africa"
+                            class="mission-main-image">
+                        <div class="mission-icons-overlay">
+                            <div class="mission-icon">
+                                <i class="fas fa-hands-praying"></i>
+                            </div>
+                            <div class="mission-icon">
+                                <i class="fas fa-globe-africa"></i>
+                            </div>
+                            <div class="mission-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preview Sections -->
+    <section class="section preview-section">
+        <div class="container">
+            <h2 class="section-title">Latest Updates</h2>
+
+            <!-- Section Headers Row -->
+            <div class="preview-headers-row">
+                <div class="preview-header">
+                    <h3><i class="fas fa-bullhorn"></i> Announcements</h3>
+                    <a href="news.html#announcements" class="view-all">View All</a>
+                </div>
+                <div class="preview-header">
+                    <h3><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
+                    <a href="events.html" class="view-all">View All</a>
+                </div>
+                <div class="preview-header">
+                    <h3><i class="fas fa-newspaper"></i> Recent News</h3>
+                    <a href="news.html" class="view-all">View All</a>
+                </div>
+            </div>
+
+            <!-- Cards Row -->
+            <div class="row">
+                <!-- Announcements Column -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Annual General Meeting 2026</h4>
+                            <p class="card-date">March 15, 2026</p>
+                            <p class="card-text">Notice for all AFA members regarding the upcoming Annual General
+                                Meeting scheduled for June 2026 in Nairobi, Kenya.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">New Partnership Initiative</h4>
+                            <p class="card-date">February 28, 2026</p>
+                            <p class="card-text">AFA announces a new partnership with Catholic Relief Services for
+                                educational programs in West Africa.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Upcoming Events Column -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Youth Leadership Conference</h4>
+                            <p class="card-date">April 10-12, 2026</p>
+                            <p class="card-location"><i class="fas fa-map-marker-alt"></i> Nairobi, Kenya</p>
+                            <p class="card-text">A gathering of young Augustinian leaders from across Africa to discuss
+                                faith in action.</p>
+                            <a href="events.html" class="read-more">Event Details →</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">Executive Meeting</h4>
+                            <p class="card-date">January 26-28, 2026</p>
+                            <p class="card-location"><i class="fas fa-map-marker-alt"></i> Accra, Ghana</p>
+                            <p class="card-text">Meeting of AFA Executives, holding at Accra Ghana, to explore
+                                collaborative possibilities.</p>
+                            <a href="events.html" class="read-more">Event Details →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent News Column -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">AFA Quarterly Newsletter</h4>
+                            <p class="card-date">Q1 2026</p>
+                            <p class="card-text">Read about our latest initiatives, community stories, and spiritual
+                                reflections from across Africa.</p>
+                            <a href="#" class="btn btn-outline btn-sm">Download PDF</a>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="card-title">2nd Education Conference</h4>
+                            <p class="card-date">February 15, 2026</p>
+                            <p class="card-text">AFA organizes second Education Conference for all teachers within the
+                                AFA region.</p>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Join Us in Our Mission</h2>
+                <p>Your support helps us continue our work across Africa. Together, we can make a difference in
+                    communities through faith, education, and sustainable development.</p>
+                <div class="cta-buttons">
+                    <a href="#" class="btn btn-secondary btn-lg">Donate Now</a>
+                    <a href="contact.html" class="btn btn-outline btn-lg">Get Involved</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-logo">
+                        <img src="static/images/logo1.png" alt="Augustinian Federation for Africa"
+                            class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <span class="logo-main">Augustinian Federation</span>
+                            <span class="logo-sub">for Africa</span>
+                        </div>
+                    </div>
+                    <p class="footer-about">
+                        Uniting Augustinian communities across Africa in faith, service, and solidarity.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="executive-board.html">Executive Board</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="news.html">News & Announcements</a></li>
+                        <li><a href="news.html#newsletters">Newsletters</a></li>
+                        <li><a href="#">Annual Reports</a></li>
+                        <li><a href="#">Prayer Resources</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> AFA Curia</li>
+                        <li><i class="fas fa-envelope"></i> info@afa-osa.org</li>
+                        <li><i class="fas fa-phone"></i> +2347032150873</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Augustinian Federation for Africa. All rights reserved | Powered by Sidasoft.</p>
+                <p class="footer-credits">Powered by Sidasoft</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/main.js"></script>
+    <script>
+        // Home page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            // Simple animation for mission icons
+            const missionIcons = document.querySelectorAll('.mission-icon');
+            missionIcons.forEach((icon, index) => {
+                icon.style.animationDelay = `${index * 0.2}s`;
+                icon.classList.add('animate-icon');
+            });
+
+            // Update current year in footer
+            document.querySelector('.footer-bottom p').innerHTML = `&copy; ${new Date().getFullYear()} Augustinian Federation for Africa. All rights reserved.`;
+        });
+
+
+
+        // Hero Slideshow Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelectorAll('.slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.querySelector('.slide-nav.prev');
+            const nextBtn = document.querySelector('.slide-nav.next');
+            let currentSlide = 0;
+            let slideInterval;
+            const slideDuration = 4000; // 4 seconds
+
+            // Function to show a specific slide
+            function showSlide(index) {
+                // Remove active class from all slides and indicators
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+
+                // Handle wrap-around
+                if (index >= slides.length) {
+                    currentSlide = 0;
+                } else if (index < 0) {
+                    currentSlide = slides.length - 1;
+                } else {
+                    currentSlide = index;
+                }
+
+                // Add active class to current slide and indicator
+                slides[currentSlide].classList.add('active');
+                indicators[currentSlide].classList.add('active');
+            }
+
+            // Function to start automatic slideshow
+            function startSlideshow() {
+                slideInterval = setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, slideDuration);
+            }
+
+            // Function to stop automatic slideshow
+            function stopSlideshow() {
+                clearInterval(slideInterval);
+            }
+
+            // Event listeners for indicators
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    stopSlideshow();
+                    showSlide(index);
+                    startSlideshow();
+                });
+            });
+
+            // Event listeners for navigation buttons
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    stopSlideshow();
+                    showSlide(currentSlide - 1);
+                    startSlideshow();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    stopSlideshow();
+                    showSlide(currentSlide + 1);
+                    startSlideshow();
+                });
+            }
+
+            // Pause slideshow on hover (optional)
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                heroSection.addEventListener('mouseenter', stopSlideshow);
+                heroSection.addEventListener('mouseleave', startSlideshow);
+
+                // For touch devices
+                heroSection.addEventListener('touchstart', stopSlideshow);
+                heroSection.addEventListener('touchend', startSlideshow);
+            }
+
+            // Initialize the slideshow
+            showSlide(0);
+            startSlideshow();
+
+            // Clean up intervals when page is hidden (to save resources)
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    stopSlideshow();
+                } else {
+                    startSlideshow();
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>
