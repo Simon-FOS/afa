@@ -1,0 +1,1749 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events | Augustinian Federation for Africa (AFA)</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Page-specific styles for Events page */
+        :root {
+            --font-primary: 'Open Sans', sans-serif;
+            --font-secondary: 'Merriweather', serif;
+        }
+
+        body {
+            font-family: var(--font-primary);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-secondary);
+        }
+
+        /* Page Header */
+        .page-header {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            color: var(--color-white);
+            margin-top: 10px;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('static/images/events-banner.jpg') center/cover no-repeat;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            color: var(--color-white);
+            margin-bottom: var(--space-md);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background-color: var(--color-gray-100);
+            padding: 1rem 0;
+            margin-bottom: var(--space-lg);
+        }
+
+        .breadcrumb-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .breadcrumb-nav a {
+            color: var(--color-gray-600);
+            text-decoration: none;
+        }
+
+        .breadcrumb-nav a:hover {
+            color: var(--color-primary);
+        }
+
+        .breadcrumb-nav .separator {
+            color: var(--color-gray-500);
+        }
+
+        /* Events Layout */
+        .events-section {
+            padding: var(--space-xl) 0;
+        }
+
+        /* Events Filter */
+        .events-filter {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-xl);
+            border: 1px solid var(--color-gray-200);
+        }
+
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .filter-title {
+            font-size: 1.5rem;
+            color: var(--color-gray-900);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .filter-title i {
+            color: var(--color-primary);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-300);
+            border-radius: 50px;
+            color: var(--color-gray-700);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        /* Search and Date Filter */
+        .filter-controls {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem 0.75rem 3rem;
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: border-color var(--transition-base);
+        }
+
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(139, 185, 77, 0.1);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--color-gray-500);
+        }
+
+        .date-filter {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .date-input {
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            min-width: 150px;
+        }
+
+        /* Events Grid */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        /* Event Card */
+        .event-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            border: 1px solid var(--color-gray-200);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+        }
+
+        .event-card.featured {
+            border: 2px solid var(--color-secondary);
+            position: relative;
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--color-secondary);
+            color: var(--color-white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            z-index: 2;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .event-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .event-card:hover .event-image img {
+            transform: scale(1.05);
+        }
+
+        .event-date {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--color-white);
+            padding: 0.75rem;
+            border-radius: var(--radius-md);
+            text-align: center;
+            box-shadow: var(--shadow-md);
+        }
+
+        .event-day {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            line-height: 1;
+        }
+
+        .event-month {
+            font-size: 0.9rem;
+            color: var(--color-gray-700);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .event-content {
+            padding: var(--space-md);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .event-category {
+            display: inline-block;
+            background: var(--color-gray-100);
+            color: var(--color-gray-700);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            align-self: flex-start;
+        }
+
+        .event-category.conference {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .event-category.retreat {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .event-category.meeting {
+            background: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .event-category.workshop {
+            background: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .event-title {
+            font-size: 1.4rem;
+            color: var(--color-gray-900);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        .event-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gray-600);
+            font-size: 0.9rem;
+        }
+
+        .meta-item i {
+            color: var(--color-primary);
+            width: 16px;
+        }
+
+        .event-description {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            margin-bottom: var(--space-md);
+            flex-grow: 1;
+        }
+
+        .event-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        /* Calendar Section */
+        .calendar-section {
+            background-color: var(--color-gray-100);
+            padding: var(--space-xl) 0;
+        }
+
+        .calendar-container {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-gray-200);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md);
+            background: linear-gradient(135deg, var(--color-primary), #7aa642);
+            color: var(--color-white);
+        }
+
+        .calendar-nav {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .calendar-nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: var(--color-white);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: background-color var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calendar-nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 1px;
+            background: var(--color-gray-200);
+        }
+
+        .calendar-day-header {
+            background: var(--color-gray-100);
+            padding: var(--space-sm);
+            text-align: center;
+            font-weight: 600;
+            color: var(--color-gray-700);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .calendar-day {
+            background: var(--color-white);
+            padding: var(--space-sm);
+            min-height: 100px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color var(--transition-base);
+        }
+
+        .calendar-day:hover {
+            background: var(--color-gray-50);
+        }
+
+        .calendar-day.empty {
+            background: var(--color-gray-50);
+            cursor: default;
+        }
+
+        .day-number {
+            font-weight: 600;
+            color: var(--color-gray-900);
+            margin-bottom: 0.25rem;
+        }
+
+        .day-events {
+            font-size: 0.8rem;
+        }
+
+        .day-event {
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.125rem 0.5rem;
+            border-radius: 3px;
+            margin-bottom: 0.125rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .day-event.featured {
+            background: var(--color-secondary);
+        }
+
+        /* Event Modal */
+        .event-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-md);
+        }
+
+        .event-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            max-width: 800px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--color-gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--color-gray-600);
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color var(--transition-base);
+        }
+
+        .modal-close:hover {
+            background: var(--color-gray-100);
+            color: var(--color-gray-900);
+        }
+
+        .modal-body {
+            padding: var(--space-lg);
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-md);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-xl);
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            background: var(--color-white);
+            color: var(--color-gray-700);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .page-btn:hover:not(.disabled) {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .page-btn.active {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .events-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .page-header {
+                height: 300px;
+                margin-top: 70px;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .filter-controls {
+                grid-template-columns: 1fr;
+                gap: var(--space-sm);
+            }
+
+            .date-filter {
+                flex-direction: column;
+            }
+
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+                font-size: 0.9rem;
+            }
+
+            .calendar-day {
+                min-height: 80px;
+                padding: 0.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                height: 250px;
+                margin-top: 60px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .events-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .filter-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-md);
+            }
+
+            .filter-buttons {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+
+            .calendar-grid {
+                grid-template-columns: repeat(7, 1fr);
+                font-size: 0.8rem;
+            }
+
+            .calendar-day {
+                min-height: 60px;
+                padding: 0.25rem;
+            }
+
+            .day-events {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .event-meta {
+                flex-direction: column;
+                gap: var(--space-xs);
+            }
+
+            .event-actions {
+                flex-direction: column;
+                gap: var(--space-sm);
+                align-items: stretch;
+            }
+
+            .modal-content {
+                margin: var(--space-md);
+            }
+
+            .modal-header {
+                padding: var(--space-md);
+            }
+
+            .modal-body {
+                padding: var(--space-md);
+            }
+        }
+
+        /* Animation for cards */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .event-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .event-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .event-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .event-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .event-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .event-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .event-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .event-card:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .event-card:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        /* Loading states */
+        .skeleton {
+            background: linear-gradient(90deg, var(--color-gray-100) 25%, var(--color-gray-200) 50%, var(--color-gray-100) 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% {
+                background-position: 200% 0;
+            }
+
+            100% {
+                background-position: -200% 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="static/images/logo1.png" alt="Augustinian Federation for Africa" class="logo-img">
+                    <span class="logo-text">
+                        <span class="logo-main">AUGUSTINIAN FEDERATION</span>
+                        <span class="logo-sub">OF AFRICA</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggle" id="navbarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="executive-board.html">Executive Board</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" class="btn btn-secondary">Donate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">AFA Events</h1>
+                <p class="page-subtitle">Join us in our mission through conferences, retreats, and gatherings across
+                    Africa</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section class="events-section">
+        <div class="container">
+            <!-- Events Filter -->
+            <div class="events-filter">
+                <div class="filter-header">
+                    <h3 class="filter-title"><i class="fas fa-filter"></i> Filter Events</h3>
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" data-filter="all">All Events</button>
+                        <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+                        <button class="filter-btn" data-filter="past">Past Events</button>
+                        <button class="filter-btn" data-filter="conference">Conferences</button>
+                        <button class="filter-btn" data-filter="retreat">Retreats</button>
+                        <button class="filter-btn" data-filter="meeting">Meetings</button>
+                        <button class="filter-btn" data-filter="workshop">Workshops</button>
+                    </div>
+                </div>
+
+                <div class="filter-controls">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="eventSearch"
+                            placeholder="Search events by title, location, or description...">
+                    </div>
+                    <div class="date-filter">
+                        <input type="date" id="startDate" class="date-input" placeholder="From Date">
+                        <input type="date" id="endDate" class="date-input" placeholder="To Date">
+                    </div>
+                    <button class="btn btn-primary" id="resetFilters">
+                        <i class="fas fa-redo"></i> Reset Filters
+                    </button>
+                </div>
+            </div>
+
+            <!-- Events Grid -->
+            <div class="events-grid" id="eventsGrid">
+                <!-- Event 1 - Featured -->
+                <div class="event-card featured" data-category="conference" data-date="2026-04-10">
+                    <div class="featured-badge">Featured</div>
+                    <div class="event-image">
+                        <img src="static/images/even1.jpeg" alt="AFA General Assembly 2026">
+                        <div class="event-date">
+                            <div class="event-day">02</div>
+                            <div class="event-month">Mar</div>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category conference">Conference</span>
+                        <h3 class="event-title">AFA General Assembly 2026</h3>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>2nd – 6th March, 2026</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>School Sisters of Notre Dame Home
+                                    Accra, Ghana</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>200+ Participants</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            The Augustinian Federation of Africa (AFA) is pleased to announce its General Assembly 2026,
+                            a continental gathering of Augustinians across Africa for reflection, dialogue, and
+                            mission-oriented engagement.
+                            Theme
+
+                            Dilexi Te: The Preferential Love for the Poor in Augustinian Spirituality and the Mission of
+                            the African Church.
+                        </p>
+                        <div class="event-actions">
+                            <a href="#" class="btn btn-primary" data-event="1">Register Now</a>
+                            <a href="#" class="read-more" data-event="1">More Details →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div class="event-card" data-category="meeting" data-date="2026-01-26">
+                    <div class="event-image">
+                        <img src="static/images/edu1.jpeg" alt="Executive Board Meeting">
+                        <div class="event-date">
+                            <div class="event-day">26</div>
+                            <div class="event-month">JAN</div>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category meeting">Conference</span>
+                        <h3 class="event-title">African Regional Commission on Education</h3>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>9th – 10th May, 2025</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Online</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>Education Conference</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            The African Regional Commission on Education, a subsidiary of the Augustinian Curia –
+                            International Commission for Apostolate and Evangelism, is pleased to announce a Two-Day
+                            Regional Conference focused on education, identity, and emerging technologies.
+                        </p>
+                        <div class="event-actions">
+                            <span class="btn btn-outline btn-sm">By Invitation</span>
+                            <a href="#" class="read-more" data-event="2">View Details →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3 -->
+                <div class="event-card" data-category="workshop" data-date="2026-03-15">
+                    <div class="event-image">
+                        <img src="static/images/eve1.jpg" alt="Virtual Seminar">
+                        <div class="event-date">
+                            <div class="event-day">01</div>
+                            <div class="event-month">AUG</div>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category workshop">Workshop</span>
+                        <h3 class="event-title">Virtual Seminar on Augustinian Spirituality</h3>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Tuesday, 1st August, 2023</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Online</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>All AFA Members</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            The Augustinian Federation of Africa (AFA) organized a virtual seminar aimed at deepening
+                            understanding and appreciation of Augustinian spirituality among members of the Augustinian
+                            family across Africa.
+                        </p>
+                        <div class="event-actions">
+                            <a href="#" class="btn btn-primary" data-event="3">Register Now</a>
+                            <a href="#" class="read-more" data-event="3">More Details →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 4 -->
+                <div class="event-card" data-category="retreat" data-date="2026-02-20">
+                    <div class="event-image">
+                        <img src="static/images/event-retreat.jpg" alt="Spiritual Retreat">
+                        <div class="event-date">
+                            <div class="event-day">20</div>
+                            <div class="event-month">FEB</div>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category retreat">Retreat</span>
+                        <h3 class="event-title">Annual Spiritual Retreat</h3>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Feb 20-25, 2026</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Kampala, Uganda</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>Open to All</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Deepen your spiritual journey through guided meditation, prayer sessions, and reflection
+                            based on Augustinian spirituality.
+                        </p>
+                        <div class="event-actions">
+                            <a href="#" class="btn btn-primary" data-event="4">Register Now</a>
+                            <a href="#" class="read-more" data-event="4">More Details →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 5 -->
+                <div class="event-card" data-category="conference" data-date="2026-06-05">
+                    <div class="event-image">
+                        <img src="static/images/event-anniversary.jpg" alt="Anniversary Celebration">
+                        <div class="event-date">
+                            <div class="event-day">05</div>
+                            <div class="event-month">JUN</div>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category conference">Conference</span>
+                        <h3 class="event-title">Annual General Meeting 2026</h3>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Jun 5-8, 2026</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Nairobi, Kenya</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>All AFA Members</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            The most important gathering of the year for all AFA members to review achievements, plan
+                            for the future, and celebrate our community.
+                        </p>
+                        <div class="event-actions">
+                            <a href="#" class="btn btn-primary" data-event="5">Register Now</a>
+                            <a href="#" class="read-more" data-event="5">More Details →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 6 -->
+                <div class="event-card" data-category="workshop" data-date="2026-05-12">
+                    <div class="event-image">
+                        <img src="static/images/event-training.jpg" alt="Leadership Training">
+                        <div class="event-date">
+                            <div class="event-day">12</div>
+                            <div class="event-month">MAY</div>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category workshop">Workshop</span>
+                        <h3 class="event-title">Community Development Workshop</h3>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>May 12-14, 2026</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Dar es Salaam, Tanzania</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>80 Participants</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Hands-on training for community leaders focusing on sustainable development projects,
+                            fundraising, and project management.
+                        </p>
+                        <div class="event-actions">
+                            <a href="#" class="btn btn-primary" data-event="6">Register Now</a>
+                            <a href="#" class="read-more" data-event="6">More Details →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 7 - Past Event -->
+                <div class="event-card" data-category="conference" data-date="2025-11-20">
+                    <div class="event-image">
+                        <img src="static/images/event-past1.jpg" alt="Past Conference">
+                        <div class="event-date">
+                            <div class="event-day">20</div>
+                            <div class="event-month">NOV</div>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category conference">Conference</span>
+                        <h3 class="event-title">2025 Interfaith Dialogue Conference</h3>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Nov 20-22, 2025</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Johannesburg, South Africa</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>120+ Participants</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Successfully held conference focusing on interfaith collaboration and peace-building
+                            initiatives across African communities.
+                        </p>
+                        <div class="event-actions">
+                            <span class="btn btn-outline btn-sm disabled">Event Completed</span>
+                            <a href="#" class="read-more" data-event="7">View Report →</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 8 - Past Event -->
+                <div class="event-card" data-category="retreat" data-date="2025-10-05">
+                    <div class="event-image">
+                        <img src="static/images/event-past2.jpg" alt="Past Retreat">
+                        <div class="event-date">
+                            <div class="event-day">05</div>
+                            <div class="event-month">OCT</div>
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <span class="event-category retreat">Retreat</span>
+                        <h3 class="event-title">2025 Augustinian Formation Retreat</h3>
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span>Oct 5-10, 2025</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Kinshasa, DRC</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-users"></i>
+                                <span>75 Participants</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Intensive spiritual formation retreat for new members of Augustinian communities, focusing
+                            on prayer life and community living.
+                        </p>
+                        <div class="event-actions">
+                            <span class="btn btn-outline btn-sm disabled">Event Completed</span>
+                            <a href="#" class="read-more" data-event="8">View Photos →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- No Events Message (Hidden by default) -->
+            <div id="noEventsMessage" class="text-center" style="display: none;">
+                <i class="fas fa-calendar-times"
+                    style="font-size: 4rem; color: var(--color-gray-400); margin-bottom: var(--space-md);"></i>
+                <h3>No Events Found</h3>
+                <p>Try adjusting your filters or check back later for upcoming events.</p>
+                <button class="btn btn-primary" id="showAllEvents">Show All Events</button>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button class="page-btn disabled" id="prevPage">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+                <button class="page-btn" id="nextPage">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calendar Section -->
+    <section class="calendar-section">
+        <div class="container">
+            <h2 class="section-title">Event Calendar</h2>
+            <p class="section-intro" style="text-align: center; max-width: 800px; margin: 0 auto var(--space-xl);">
+                Browse our upcoming events in an interactive calendar view. Click on any event date for more details.
+            </p>
+
+            <div class="calendar-container">
+                <div class="calendar-header">
+                    <h3 id="currentMonth">April 2026</h3>
+                    <div class="calendar-nav">
+                        <button class="calendar-nav-btn" id="prevMonth">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="calendar-nav-btn" id="todayBtn">
+                            Today
+                        </button>
+                        <button class="calendar-nav-btn" id="nextMonth">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="calendar-grid" id="calendarGrid">
+                    <!-- Calendar will be generated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Host an AFA Event</h2>
+                <p>Are you interested in organizing an Augustinian event in your region? Contact us to explore
+                    collaboration opportunities.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="btn btn-secondary btn-lg">Contact Our Team</a>
+                    <a href="#" class="btn btn-outline btn-lg">Download Event Guidelines</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Modal -->
+    <div class="event-modal" id="eventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Event Details</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-logo">
+                        <img src="static/images/logo1.png" alt="Augustinian Federation for Africa"
+                            class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <span class="logo-main">Augustinian Federation</span>
+                            <span class="logo-sub">for Africa</span>
+                        </div>
+                    </div>
+                    <p class="footer-about">
+                        Uniting Augustinian communities across Africa in faith, service, and solidarity.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="executive-board.html">Executive Board</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="news.html">News & Announcements</a></li>
+                        <li><a href="news.html#newsletters">Newsletters</a></li>
+                        <li><a href="#">Annual Reports</a></li>
+                        <li><a href="#">Prayer Resources</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> AFA Curia</li>
+                        <li><i class="fas fa-envelope"></i> info@afa-osa.org</li>
+                        <li><i class="fas fa-phone"></i> +2347032150873</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2026</span> Augustinian Federation for Africa. All rights reserved.</p>
+                <p class="footer-credits">Powered by Sidasoft</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/main.js"></script>
+    <script>
+        // Events page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize variables
+            let currentFilter = 'all';
+            let currentSearch = '';
+            let currentStartDate = '';
+            let currentEndDate = '';
+            let currentPage = 1;
+            let eventsPerPage = 6;
+            let currentMonth = new Date().getMonth();
+            let currentYear = new Date().getFullYear();
+
+            // Update current year in footer
+            const currentYearElement = new Date().getFullYear();
+            document.getElementById('currentYear').textContent = currentYearElement;
+
+            // Mobile navigation toggle
+            const navbarToggle = document.getElementById('navbarToggle');
+            const navbarMenu = document.getElementById('navbarMenu');
+
+            if (navbarToggle && navbarMenu) {
+                navbarToggle.addEventListener('click', () => {
+                    navbarMenu.classList.toggle('active');
+                    navbarToggle.innerHTML = navbarMenu.classList.contains('active')
+                        ? '<i class="fas fa-times"></i>'
+                        : '<i class="fas fa-bars"></i>';
+                });
+
+                navbarMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navbarMenu.classList.remove('active');
+                        navbarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+
+            // Event Filtering System
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const eventCards = document.querySelectorAll('.event-card');
+            const eventsGrid = document.getElementById('eventsGrid');
+            const noEventsMessage = document.getElementById('noEventsMessage');
+            const eventSearch = document.getElementById('eventSearch');
+            const startDateInput = document.getElementById('startDate');
+            const endDateInput = document.getElementById('endDate');
+            const resetFiltersBtn = document.getElementById('resetFilters');
+            const showAllEventsBtn = document.getElementById('showAllEvents');
+
+            // Filter events function
+            function filterEvents() {
+                let visibleCount = 0;
+
+                eventCards.forEach(card => {
+                    const category = card.dataset.category;
+                    const eventDate = new Date(card.dataset.date);
+                    const title = card.querySelector('.event-title').textContent.toLowerCase();
+                    const description = card.querySelector('.event-description').textContent.toLowerCase();
+                    const location = card.querySelector('.meta-item:nth-child(2) span').textContent.toLowerCase();
+
+                    // Check filters
+                    let matchesFilter = currentFilter === 'all' ||
+                        (currentFilter === 'upcoming' && eventDate >= new Date()) ||
+                        (currentFilter === 'past' && eventDate < new Date()) ||
+                        category === currentFilter;
+
+                    // Check search
+                    let matchesSearch = !currentSearch ||
+                        title.includes(currentSearch) ||
+                        description.includes(currentSearch) ||
+                        location.includes(currentSearch);
+
+                    // Check date range
+                    let matchesDate = true;
+                    if (currentStartDate) {
+                        const startDate = new Date(currentStartDate);
+                        matchesDate = matchesDate && eventDate >= startDate;
+                    }
+                    if (currentEndDate) {
+                        const endDate = new Date(currentEndDate);
+                        matchesDate = matchesDate && eventDate <= endDate;
+                    }
+
+                    // Show/hide card
+                    if (matchesFilter && matchesSearch && matchesDate) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show/hide no events message
+                if (visibleCount === 0) {
+                    noEventsMessage.style.display = 'block';
+                    eventsGrid.style.display = 'none';
+                } else {
+                    noEventsMessage.style.display = 'none';
+                    eventsGrid.style.display = 'grid';
+                }
+
+                // Update pagination
+                updatePagination(visibleCount);
+            }
+
+            // Filter button click handlers
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    currentFilter = btn.dataset.filter;
+                    filterEvents();
+                });
+            });
+
+            // Search input handler
+            eventSearch.addEventListener('input', (e) => {
+                currentSearch = e.target.value.toLowerCase();
+                filterEvents();
+            });
+
+            // Date filter handlers
+            startDateInput.addEventListener('change', (e) => {
+                currentStartDate = e.target.value;
+                filterEvents();
+            });
+
+            endDateInput.addEventListener('change', (e) => {
+                currentEndDate = e.target.value;
+                filterEvents();
+            });
+
+            // Reset filters
+            resetFiltersBtn.addEventListener('click', () => {
+                filterButtons.forEach(b => {
+                    b.classList.remove('active');
+                    if (b.dataset.filter === 'all') b.classList.add('active');
+                });
+
+                currentFilter = 'all';
+                currentSearch = '';
+                currentStartDate = '';
+                currentEndDate = '';
+
+                eventSearch.value = '';
+                startDateInput.value = '';
+                endDateInput.value = '';
+
+                filterEvents();
+            });
+
+            // Show all events
+            if (showAllEventsBtn) {
+                showAllEventsBtn.addEventListener('click', () => {
+                    resetFiltersBtn.click();
+                });
+            }
+
+            // Pagination functions
+            function updatePagination(totalEvents) {
+                const totalPages = Math.ceil(totalEvents / eventsPerPage);
+                const pagination = document.querySelector('.pagination');
+
+                // Simple implementation - in a real app, you would update page numbers
+                if (totalPages <= 1) {
+                    pagination.style.display = 'none';
+                } else {
+                    pagination.style.display = 'flex';
+                }
+            }
+
+            // Calendar functionality
+            const calendarGrid = document.getElementById('calendarGrid');
+            const currentMonthElement = document.getElementById('currentMonth');
+            const prevMonthBtn = document.getElementById('prevMonth');
+            const nextMonthBtn = document.getElementById('nextMonth');
+            const todayBtn = document.getElementById('todayBtn');
+
+            // Sample events data for calendar
+            const calendarEvents = {
+                '2026-04-10': { title: 'Youth Conference', category: 'conference', featured: true },
+                '2026-01-26': { title: 'Exec Meeting', category: 'meeting' },
+                '2026-03-15': { title: 'Education Conf', category: 'workshop' },
+                '2026-02-20': { title: 'Spiritual Retreat', category: 'retreat' },
+                '2026-06-05': { title: 'AGM 2026', category: 'conference', featured: true },
+                '2026-05-12': { title: 'Dev Workshop', category: 'workshop' },
+            };
+
+            // Generate calendar
+            function generateCalendar(month, year) {
+                const firstDay = new Date(year, month, 1);
+                const lastDay = new Date(year, month + 1, 0);
+                const daysInMonth = lastDay.getDate();
+                const startingDay = firstDay.getDay(); // 0 = Sunday, 1 = Monday, etc.
+
+                // Update month display
+                const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                    'July', 'August', 'September', 'October', 'November', 'December'];
+                currentMonthElement.textContent = `${monthNames[month]} ${year}`;
+
+                // Clear calendar
+                calendarGrid.innerHTML = '';
+
+                // Add day headers
+                const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+                dayNames.forEach(day => {
+                    const dayHeader = document.createElement('div');
+                    dayHeader.className = 'calendar-day-header';
+                    dayHeader.textContent = day;
+                    calendarGrid.appendChild(dayHeader);
+                });
+
+                // Add empty cells for days before the first day of the month
+                for (let i = 0; i < startingDay; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.className = 'calendar-day empty';
+                    calendarGrid.appendChild(emptyDay);
+                }
+
+                // Add days of the month
+                for (let day = 1; day <= daysInMonth; day++) {
+                    const dayElement = document.createElement('div');
+                    dayElement.className = 'calendar-day';
+
+                    const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+
+                    // Add day number
+                    const dayNumber = document.createElement('div');
+                    dayNumber.className = 'day-number';
+                    dayNumber.textContent = day;
+                    dayElement.appendChild(dayNumber);
+
+                    // Check for events on this day
+                    if (calendarEvents[dateStr]) {
+                        const event = calendarEvents[dateStr];
+                        const dayEvents = document.createElement('div');
+                        dayEvents.className = 'day-events';
+
+                        const eventElement = document.createElement('div');
+                        eventElement.className = `day-event ${event.featured ? 'featured' : ''}`;
+                        eventElement.textContent = event.title;
+                        eventElement.title = event.title;
+
+                        // Add click event to show modal
+                        eventElement.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            showEventModal(dateStr);
+                        });
+
+                        dayEvents.appendChild(eventElement);
+                        dayElement.appendChild(dayEvents);
+
+                        // Highlight today
+                        const today = new Date();
+                        if (year === today.getFullYear() && month === today.getMonth() && day === today.getDate()) {
+                            dayElement.style.backgroundColor = 'var(--color-gray-50)';
+                        }
+                    }
+
+                    // Add click event to day
+                    dayElement.addEventListener('click', () => {
+                        showEventModal(dateStr);
+                    });
+
+                    calendarGrid.appendChild(dayElement);
+                }
+            }
+
+            // Initialize calendar
+            generateCalendar(currentMonth, currentYear);
+
+            // Calendar navigation
+            prevMonthBtn.addEventListener('click', () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                generateCalendar(currentMonth, currentYear);
+            });
+
+            nextMonthBtn.addEventListener('click', () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                generateCalendar(currentMonth, currentYear);
+            });
+
+            todayBtn.addEventListener('click', () => {
+                const today = new Date();
+                currentMonth = today.getMonth();
+                currentYear = today.getFullYear();
+                generateCalendar(currentMonth, currentYear);
+            });
+
+            // Event Modal functionality
+            const eventModal = document.getElementById('eventModal');
+            const modalClose = document.getElementById('modalClose');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalBody = document.getElementById('modalBody');
+
+            // Event data for modal
+            const eventDetails = {
+                1: {
+                    title: 'Youth Leadership Conference 2026',
+                    image: 'static/images/event-youth.jpg',
+                    date: 'April 10-12, 2026',
+                    location: 'Nairobi, Kenya',
+                    category: 'Conference',
+                    description: 'A gathering of young Augustinian leaders from across Africa to discuss faith in action, leadership development, and community engagement.',
+                    details: `
+                        <p>This conference brings together young leaders from across Africa to explore how Augustinian spirituality can inform and inspire leadership in today's world.</p>
+                        <h4>Conference Highlights:</h4>
+                        <ul>
+                            <li>Keynote addresses from renowned Augustinian scholars</li>
+                            <li>Interactive workshops on leadership and community building</li>
+                            <li>Networking sessions with peers from across Africa</li>
+                            <li>Prayer and reflection sessions</li>
+                            <li>Cultural exchange activities</li>
+                        </ul>
+                        <h4>Registration Details:</h4>
+                        <p>Registration fee: $150 (includes meals, materials, and conference package)</p>
+                        <p>Early bird discount available until March 15, 2026</p>
+                    `,
+                    contact: 'youthconference@afa-osa.org'
+                },
+                // Add details for other events...
+            };
+
+            // Show event modal
+            function showEventModal(eventId) {
+                const event = eventDetails[eventId] || {
+                    title: 'Event Details',
+                    description: 'Detailed information about this event will be available soon.',
+                    details: '<p>Check back later for more information about this event.</p>'
+                };
+
+                modalTitle.textContent = event.title;
+                modalBody.innerHTML = `
+                    ${event.image ? `<img src="${event.image}" alt="${event.title}" class="modal-image">` : ''}
+                    <div class="row" style="margin-bottom: var(--space-md);">
+                        <div class="col-md-6">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar-alt"></i>
+                                <span><strong>Date:</strong> ${event.date || 'TBA'}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span><strong>Location:</strong> ${event.location || 'TBA'}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meta-item" style="margin-bottom: var(--space-md);">
+                        <i class="fas fa-tag"></i>
+                        <span><strong>Category:</strong> ${event.category || 'General'}</span>
+                    </div>
+                    <p><strong>Description:</strong> ${event.description}</p>
+                    ${event.details || ''}
+                    ${event.contact ? `<p><strong>Contact:</strong> ${event.contact}</p>` : ''}
+                    <div style="margin-top: var(--space-lg); text-align: center;">
+                        <a href="#" class="btn btn-primary btn-lg">Register Now</a>
+                        <button class="btn btn-outline btn-lg" id="modalCloseBtn">Close</button>
+                    </div>
+                `;
+
+                eventModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+
+                // Add close event to modal close button
+                const modalCloseBtn = document.getElementById('modalCloseBtn');
+                if (modalCloseBtn) {
+                    modalCloseBtn.addEventListener('click', closeModal);
+                }
+            }
+
+            // Close modal function
+            function closeModal() {
+                eventModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+
+            // Close modal events
+            modalClose.addEventListener('click', closeModal);
+            eventModal.addEventListener('click', (e) => {
+                if (e.target === eventModal) {
+                    closeModal();
+                }
+            });
+
+            // Event card click handlers
+            document.querySelectorAll('.read-more').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const eventId = e.target.dataset.event;
+                    showEventModal(eventId);
+                });
+            });
+
+            // Initialize filter on load
+            filterEvents();
+
+            // Add keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && eventModal.classList.contains('active')) {
+                    closeModal();
+                }
+                if (e.key === 'Enter' && document.activeElement === eventSearch) {
+                    e.preventDefault();
+                    filterEvents();
+                }
+            });
+
+            // Add smooth scroll animation for cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.event-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>
