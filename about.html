@@ -4,245 +4,758 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Augustinian Federation for Africa</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>About | Augustinian Federation for Africa (AFA)</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Page-specific styles for About page */
+        :root {
+            --font-primary: 'Open Sans', sans-serif;
+            --font-secondary: 'Merriweather', serif;
+        }
+
+        body {
+            font-family: var(--font-primary);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-secondary);
+        }
+
+        /* About page specific styles */
+        .page-header {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            color: var(--color-white);
+            margin-top: 10px;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('static/images/afa1.jpg') center/cover no-repeat;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            color: var(--color-white);
+            margin-bottom: var(--space-md);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+        }
+
+
+        /* Content Sections */
+        .content-section {
+            padding: var(--space-xl) 0;
+        }
+
+        .content-section:nth-child(even) {
+            background-color: var(--color-gray-100);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--color-secondary);
+            margin-bottom: var(--space-md);
+            font-weight: 600;
+        }
+
+        /* Mission/Vision Boxes */
+        .mission-vision-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-xl);
+        }
+
+        .mv-box {
+            background-color: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            border-top: 4px solid var(--color-primary);
+            transition: transform var(--transition-base), box-shadow var(--transition-base);
+        }
+
+        .mv-box:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mv-box h3 {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            color: var(--color-primary);
+            margin-bottom: var(--space-md);
+        }
+
+        .mv-box h3 i {
+            font-size: 1.5rem;
+        }
+
+        /* Members Grid */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-md);
+            margin-top: var(--space-xl);
+        }
+
+        .member-card {
+            background-color: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-sm);
+            border-left: 3px solid var(--color-primary);
+            transition: all var(--transition-base);
+        }
+
+        .member-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-left-color: var(--color-secondary);
+        }
+
+        .member-card h4 {
+            color: var(--color-gray-800);
+            margin-bottom: var(--space-sm);
+            font-size: 1.1rem;
+        }
+
+        .member-card .location {
+            color: var(--color-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .member-card .location i {
+            font-size: 0.8rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: var(--space-xl) auto 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--color-primary);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: var(--space-xl);
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+        }
+
+        .timeline-content {
+            background-color: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-gray-200);
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: 0;
+            width: 80px;
+            height: 80px;
+            background-color: var(--color-primary);
+            color: var(--color-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-year {
+            right: -40px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-year {
+            left: -40px;
+        }
+
+        /* Stats Counter */
+        .stats-section {
+            background: linear-gradient(135deg, var(--color-primary), #7aa642);
+            color: var(--color-white);
+            text-align: center;
+            padding: var(--space-xl) 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .stat-item {
+            padding: var(--space-md);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: var(--space-sm);
+            font-family: var(--font-secondary);
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .page-header {
+                height: 300px;
+                margin-top: 70px;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .timeline::before {
+                left: 30px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                padding-left: 80px;
+            }
+
+            .timeline-year {
+                left: 0 !important;
+                width: 60px;
+                height: 60px;
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                height: 250px;
+                margin-top: 60px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mission-vision-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <!-- Header will be loaded by JavaScript -->
-    <div id="header-container"></div>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="static/images/logo1.png" alt="Augustinian Federation for Africa" class="logo-img">
+                    <span class="logo-text">
+                        <span class="logo-main">AUGUSTINIAN FEDERATION</span>
+                        <span class="logo-sub">FOR AFRICA</span>
+                    </span>
+                </a>
 
-    <main class="about-page">
-        <!-- Breadcrumb -->
-        <section class="breadcrumb">
-            <div class="container">
-                <ul class="breadcrumb-list">
-                    <li class="breadcrumb-item">
-                        <a href="index.html" class="breadcrumb-link">Home</a>
-                    </li>
-                    <li class="breadcrumb-item active">
-                        <a href="about.html" class="breadcrumb-link">About</a>
-                    </li>
+                <button class="navbar-toggle" id="navbarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="executive-board.html">Executive Board</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" class="btn btn-secondary">Donate</a></li>
                 </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">About AFA</h1>
+                <p class="page-subtitle">Discover the mission, vision, and members of the Augustinian Federation for
+                    Africa</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Hero -->
-        <section class="page-hero">
-            <div class="container">
-                <h1>About the Augustinian Federation for Africa</h1>
-                <p class="hero-subtitle">Unity, Spirituality, and Service Across the Continent</p>
-            </div>
-        </section>
+    <!-- Introduction Section -->
+    <section class="content-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="section-title">Who We Are</h2>
+                    <p class="section-subtitle">Uniting Augustinian Communities Across Africa</p>
 
-        <!-- History -->
-        <section class="history-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Our History</h2>
-                    <p>From humble beginnings to a continental federation</p>
-                </div>
+                    <p>The Augustinian Federation of Africa (AFA) is an international umbrella body of all the
+                        Augustinian Religious institutes who practice Augustinian Spirituality in Africa. It comprises
+                        not only the Augustinian Circumscriptions of the Order of St Augustine (OSA) but also includes
+                        other institutes of Consecrated life that share and observe the Augustinian Spirituality and
+                        live out the rule of St Augustine in their religious communities.</p>
 
-                <div class="history-content grid grid-2 gap-lg">
-                    <div class="history-text">
-                        <p>The Augustinian Federation for Africa (AFA) was formally established in 1995, following a
-                            series of meetings among Augustinian superiors across the African continent who recognized
-                            the need for greater collaboration and shared vision.</p>
+                    <p>AFA is the African version of similar corporate religious bodies existing in other continents of
+                        the world, uniquely adapted to address the spiritual needs and challenges of the African context
+                        while remaining true to the timeless wisdom of St. Augustine.</p>
 
-                        <p>The initial meeting took place in Nairobi, Kenya, with representatives from Augustinian
-                            communities in Kenya, Tanzania, Nigeria, Ghana, and South Africa. These early visionaries
-                            saw the potential for a unified Augustinian witness in Africa.</p>
-
-                        <p>In 2001, AFA received formal recognition from the Order of Saint Augustine (O.S.A.) in Rome,
-                            establishing it as an official continental body within the global Augustinian family.</p>
-
-                        <p>Today, AFA represents Augustinian communities in over 20 African countries, working together
-                            to promote Augustinian values, support formation, and coordinate mission activities across
-                            the continent.</p>
-                    </div>
-
-                    <div class="history-image">
-                        <div class="image-placeholder large">
-                            <i class="fas fa-church fa-4x"></i>
-                            <p>Augustinian communities across Africa united in mission since 1995</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="history-milestones">
-                    <div class="milestone-card">
-                        <div class="milestone-year">1995</div>
-                        <div class="milestone-content">
-                            <h4>Foundation</h4>
-                            <p>AFA established by Augustinian leaders from five African nations</p>
-                        </div>
-                    </div>
-
-                    <div class="milestone-card">
-                        <div class="milestone-year">2001</div>
-                        <div class="milestone-content">
-                            <h4>Official Recognition</h4>
-                            <p>Formally recognized by the Order of Saint Augustine in Rome</p>
-                        </div>
-                    </div>
-
-                    <div class="milestone-card">
-                        <div class="milestone-year">2010</div>
-                        <div class="milestone-content">
-                            <h4>Expansion</h4>
-                            <p>Grew to include Augustinian communities in 15 African countries</p>
-                        </div>
-                    </div>
-
-                    <div class="milestone-card">
-                        <div class="milestone-year">2023</div>
-                        <div class="milestone-content">
-                            <h4>Current Reach</h4>
-                            <p>Now representing Augustinians in over 20 African nations</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Mission & Vision -->
-        <section class="mission-section">
-            <div class="container">
-                <div class="grid grid-2 gap-lg">
-                    <div class="mission-card card">
-                        <div class="card-header">
+                    <div class="mission-vision-grid">
+                        <div class="mv-box">
                             <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                            <p>To spread and deepen the spirituality of St. Augustine, the renowned Doctor of the
+                                Church, across the continent of Africa. AFA has the mandate to promote Augustinian
+                                ideals and values among consecrated persons, thereby fostering the growth of Augustinian
+                                life on African soil.</p>
                         </div>
-                        <div class="card-body">
-                            <p>To promote and strengthen Augustinian life and mission in Africa through:</p>
-                            <ul>
-                                <li>Fostering fraternal unity among Augustinian communities</li>
-                                <li>Supporting the formation of Augustinians at all levels</li>
-                                <li>Coordinating mission and service activities</li>
-                                <li>Promoting Augustinian spirituality and theology</li>
-                                <li>Advocating for justice, peace, and integral human development</li>
-                            </ul>
-                        </div>
-                    </div>
 
-                    <div class="vision-card card">
-                        <div class="card-header">
+                        <div class="mv-box">
                             <h3><i class="fas fa-eye"></i> Our Vision</h3>
-                        </div>
-                        <div class="card-body">
-                            <p>A vibrant, united, and prophetic Augustinian presence in Africa, contributing to the
-                                transformation of society through the witness of communities living in harmony, seeking
-                                God together, and serving with love.</p>
-                            <p>We envision an Africa where Augustinian values of community, interiority, and love for
-                                truth inspire individuals and societies toward greater unity, justice, and peace.</p>
+                            <p>To build a vibrant, united network of Augustinian communities across Africa that
+                                faithfully lives out Augustine's Rule while effectively addressing contemporary
+                                challenges through faith, education, and sustainable development.</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Core Values -->
-        <section class="values-section">
-            <div class="container">
-                <div class="section-header">
-                    <h2>Our Core Values</h2>
-                    <p>Guided by the teachings of Saint Augustine of Hippo</p>
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number" data-count="16">0</div>
+                    <div class="stat-label">Member Institutes</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="12">0</div>
+                    <div class="stat-label">African Countries</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="20">20+</div>
+                    <div class="stat-label">Years of Service</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" data-count="500">500+</div>
+                    <div class="stat-label">Religious Members</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Our Members</h2>
+            <p class="section-subtitle">United in Augustinian Spirituality Across Africa</p>
+
+            <p>The membership of AFA consists of male and female religious groups, ranging from the Augustinian
+                circumscriptions in Africa and other Institutes of Consecrated Life from across the length and breadth
+                of Africa. Currently, the following Institutes of Consecrated Life are formally recognised as members of
+                the Augustinian Federation in Africa (AFA):</p>
+
+            <div class="members-grid">
+                <!-- Member Institutes -->
+                <div class="member-card">
+                    <h4>Order of St Augustine</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Province of Nigeria</div>
                 </div>
 
-                <div class="values-grid">
-                    <div class="value-item fade-in">
-                        <div class="value-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <div class="value-content">
-                            <h3>Community</h3>
-                            <p>Living together in harmony, sharing all things in common, and supporting one another in
-                                our journey toward God.</p>
-                        </div>
-                    </div>
+                <div class="member-card">
+                    <h4>Order of St Augustine</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Vicariate of Kenya</div>
+                </div>
 
-                    <div class="value-item fade-in">
-                        <div class="value-icon">
-                            <i class="fas fa-search"></i>
-                        </div>
-                        <div class="value-content">
-                            <h3>Interiority</h3>
-                            <p>Turning inward to discover God who is closer to us than we are to ourselves, as Augustine
-                                taught.</p>
-                        </div>
-                    </div>
+                <div class="member-card">
+                    <h4>Order of St Augustine</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Vicariate of Tanzania</div>
+                </div>
 
-                    <div class="value-item fade-in">
-                        <div class="value-icon">
-                            <i class="fas fa-book"></i>
-                        </div>
-                        <div class="value-content">
-                            <h3>Love for Truth</h3>
-                            <p>Seeking truth with humility and openness, recognizing that all truth leads to God, who is
-                                Truth itself.</p>
-                        </div>
-                    </div>
+                <div class="member-card">
+                    <h4>Order of St Augustine</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Togo</div>
+                </div>
 
-                    <div class="value-item fade-in">
-                        <div class="value-icon">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
-                        <div class="value-content">
-                            <h3>Service</h3>
-                            <p>Following Christ who came not to be served but to serve, especially those who are poor
-                                and marginalized.</p>
-                        </div>
-                    </div>
+                <div class="member-card">
+                    <h4>Order of St Augustine</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Vicariate of Congo DRC</div>
+                </div>
 
-                    <div class="value-item fade-in">
-                        <div class="value-icon">
-                            <i class="fas fa-globe-africa"></i>
-                        </div>
-                        <div class="value-content">
-                            <h3>African Inculturation</h3>
-                            <p>Rooting Augustinian spirituality in the rich cultural and spiritual soil of Africa.</p>
-                        </div>
-                    </div>
+                <div class="member-card">
+                    <h4>Soeurs Augustines de la Misericorde de Jesus</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Burkina Faso</div>
+                </div>
 
-                    <div class="value-item fade-in">
-                        <div class="value-icon">
-                            <i class="fas fa-dove"></i>
-                        </div>
-                        <div class="value-content">
-                            <h3>Peace & Reconciliation</h3>
-                            <p>Working for peace, healing divisions, and building bridges in a continent marked by
-                                conflict.</p>
-                        </div>
+                <div class="member-card">
+                    <h4>Augustinian Sisters of the Mercy of Jesus</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Nigeria</div>
+                </div>
+
+                <div class="member-card">
+                    <h4>Soeurs Hospitalieres de Saint-Thomas de Villeneuve</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Benin, Togo, Senegal</div>
+                </div>
+
+                <div class="member-card">
+                    <h4>Augustinian Sisters of the Mercy of Jesus</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> South Africa</div>
+                </div>
+
+                <div class="member-card">
+                    <h4>Congregation des Soeurs de Saint Augustin du Benin (SSA)</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Republique Benin</div>
+                </div>
+
+                <div class="member-card">
+                    <h4>Institut des Soeurs de Notre Dame de la Trinite</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Togo</div>
+                </div>
+
+                <div class="member-card">
+                    <h4>Sisters of Mary of Kakamega</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Kenya</div>
+                </div>
+
+                <div class="member-card">
+                    <h4>Institution des Soeurs de Notre Dame de l'Eglise (NDE)</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Togo</div>
+                </div>
+
+                <div class="member-card">
+                    <h4>Augustinian Recollect Nuns of Wote Makueni</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Kenya</div>
+                </div>
+
+                <div class="member-card">
+                    <h4>Augustinian Missional Sisters</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Tanzania</div>
+                </div>
+
+                <div class="member-card">
+                    <h4>Soeurs Saint-Augustin</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Lome</div>
+                </div>
+
+                <div class="member-card">
+                    <h4>Servants of Jesus and Mary</h4>
+                    <div class="location"><i class="fas fa-map-marker-alt"></i> Lubumbashi, Congo RDC</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Our Journey</h2>
+            <p class="section-subtitle">Milestones in the AFA Story</p>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">1980s</div>
+                    <div class="timeline-content">
+                        <h4>Formation of Early Connections</h4>
+                        <p>Initial conversations and meetings among Augustinian communities across Africa begin,
+                            recognizing the need for continental collaboration.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">1995</div>
+                    <div class="timeline-content">
+                        <h4>First Continental Gathering</h4>
+                        <p>Representatives from Augustinian communities across Africa meet formally for the first time,
+                            laying the foundation for a unified federation.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2002</div>
+                    <div class="timeline-content">
+                        <h4>Official Establishment</h4>
+                        <p>The Augustinian Federation for Africa is formally established with recognition from the Order
+                            of St. Augustine and local ecclesiastical authorities.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2010</div>
+                    <div class="timeline-content">
+                        <h4>Expansion of Membership</h4>
+                        <p>Membership grows to include female religious institutes, creating a truly inclusive
+                            Augustinian family across Africa.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2018</div>
+                    <div class="timeline-content">
+                        <h4>First Youth Conference</h4>
+                        <p>AFA organizes its first continent-wide youth leadership conference, engaging the next
+                            generation of Augustinian leaders.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h4>Digital Transformation</h4>
+                        <p>Launch of the AFA digital platform to enhance communication and collaboration among member
+                            institutes across Africa.</p>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Call to Action -->
-        <section class="cta">
-            <div class="container">
-                <h2>Join Our Mission</h2>
-                <p>Whether you are an Augustinian, a partner organization, or someone inspired by our mission, there are
-                    many ways to get involved with the Augustinian Federation for Africa.</p>
+    <!-- Call to Action -->
+    <section class="section cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Become Part of Our Story</h2>
+                <p>Join us in promoting Augustinian spirituality across Africa. Whether through prayer, partnership, or
+                    participation, there are many ways to get involved.</p>
                 <div class="cta-buttons">
-                    <a href="contact.html" class="btn btn-primary">Contact Us</a>
-                    <a href="events.html" class="btn btn-secondary">Upcoming Events</a>
+                    <a href="contact.html" class="btn btn-secondary btn-lg">Contact Us</a>
+                    <a href="events.html" class="btn btn-outline btn-lg">Upcoming Events</a>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <!-- Footer will be loaded by JavaScript -->
-    <div id="footer-container"></div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-logo">
+                        <img src="static/images/logo1.png" alt="Augustinian Federation for Africa"
+                            class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <span class="logo-main">Augustinian Federation</span>
+                            <span class="logo-sub">for Africa</span>
+                        </div>
+                    </div>
+                    <p class="footer-about">
+                        Uniting Augustinian communities across Africa in faith, service, and solidarity.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
 
-    <script src="js/data.js"></script>
-    <script src="js/main.js"></script>
+                <div class="col-md-2">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="executive-board.html">Executive Board</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="news.html">News & Announcements</a></li>
+                        <li><a href="news.html#newsletters">Newsletters</a></li>
+                        <li><a href="#">Annual Reports</a></li>
+                        <li><a href="#">Prayer Resources</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> AFA Curia</li>
+                        <li><i class="fas fa-envelope"></i> info@afa-osa.org</li>
+                        <li><i class="fas fa-phone"></i> +2347032150873</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2026</span> Augustinian Federation for Africa. All rights reserved.</p>
+                <p class="footer-credits">Powered by Sidasoft</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/main.js"></script>
+    <script>
+        // About page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            // Update current year in footer
+            const currentYear = new Date().getFullYear();
+            document.getElementById('currentYear').textContent = currentYear;
+
+            // Animated counter for stats
+            const statNumbers = document.querySelectorAll('.stat-number');
+
+            const animateCounter = (element) => {
+                const target = parseInt(element.getAttribute('data-count'));
+                const duration = 2000; // 2 seconds
+                const step = Math.ceil(target / (duration / 16)); // 60fps
+                let current = 0;
+
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        element.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        element.textContent = current;
+                    }
+                }, 16);
+            };
+
+            // Intersection Observer for stats animation
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        statNumbers.forEach(stat => {
+                            if (stat.textContent === '0') {
+                                animateCounter(stat);
+                            }
+                        });
+                        statsObserver.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            // Observe stats section
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+
+            // Mobile navigation toggle
+            const navbarToggle = document.getElementById('navbarToggle');
+            const navbarMenu = document.getElementById('navbarMenu');
+
+            if (navbarToggle && navbarMenu) {
+                navbarToggle.addEventListener('click', () => {
+                    navbarMenu.classList.toggle('active');
+                    navbarToggle.innerHTML = navbarMenu.classList.contains('active')
+                        ? '<i class="fas fa-times"></i>'
+                        : '<i class="fas fa-bars"></i>';
+                });
+
+                // Close menu when clicking a link
+                navbarMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navbarMenu.classList.remove('active');
+                        navbarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+
+            // Timeline animation on scroll
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            const timelineObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.3 });
+
+            // Set initial state and observe
+            timelineItems.forEach((item, index) => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+                timelineObserver.observe(item);
+            });
+        });
+    </script>
 </body>
 
 </html>

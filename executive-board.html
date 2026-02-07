@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Board | Augustinian Federation for Africa (AFA)</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Page-specific styles for Executive Board page */
+        :root {
+            --font-primary: 'Open Sans', sans-serif;
+            --font-secondary: 'Merriweather', serif;
+        }
+
+        body {
+            font-family: var(--font-primary);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-secondary);
+        }
+
+        /* Page Header */
+        .page-header {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            color: var(--color-white);
+            margin-top: 10px;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+                url('static/images/exec.jpg') center/cover no-repeat;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            color: var(--color-white);
+            margin-bottom: var(--space-md);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+        }
+
+
+
+        /* Executive Board Layout */
+        .executive-section {
+            padding: var(--space-xl) 0;
+        }
+
+        .section-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-xl);
+            font-size: 1.1rem;
+            color: var(--color-gray-700);
+            line-height: 1.8;
+        }
+
+        /* Executive Grid */
+        .executive-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        /* Executive Card */
+        .executive-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            border: 1px solid var(--color-gray-200);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .executive-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+        }
+
+        .executive-photo {
+            position: relative;
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .executive-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .executive-card:hover .executive-photo img {
+            transform: scale(1.05);
+        }
+
+        .executive-badge {
+            position: absolute;
+            bottom: 20px;
+            left: 0;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.5rem 1.5rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+
+        .executive-details {
+            padding: var(--space-md);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .executive-name {
+            font-size: 1.5rem;
+            color: var(--color-gray-900);
+            margin-bottom: var(--space-xs);
+            line-height: 1.3;
+        }
+
+        .executive-position {
+            color: var(--color-secondary);
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: var(--space-sm);
+            line-height: 1.4;
+        }
+
+        .executive-country {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gray-600);
+            font-size: 0.95rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .executive-country i {
+            color: var(--color-primary);
+        }
+
+        .executive-affiliation {
+            color: var(--color-gray-700);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-top: auto;
+            padding-top: var(--space-sm);
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        /* Regional Representatives Section */
+        .regional-section {
+            background-color: var(--color-gray-100);
+            padding: var(--space-xl) 0;
+        }
+
+        .regional-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-md);
+        }
+
+        .regional-card {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-sm);
+            border-left: 3px solid var(--color-primary);
+            transition: all var(--transition-base);
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        .regional-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-left-color: var(--color-secondary);
+        }
+
+        .regional-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            border: 3px solid var(--color-gray-200);
+        }
+
+        .regional-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .regional-info {
+            flex-grow: 1;
+        }
+
+        .regional-name {
+            font-size: 1.2rem;
+            color: var(--color-gray-900);
+            margin-bottom: 0.25rem;
+        }
+
+        .regional-role {
+            color: var(--color-gray-600);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .regional-region {
+            display: inline-block;
+            background: var(--color-gray-200);
+            color: var(--color-gray-700);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Organization Chart */
+        .org-chart-section {
+            padding: var(--space-xl) 0;
+        }
+
+        .org-chart-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow-x: auto;
+            padding: var(--space-md);
+        }
+
+        .org-chart {
+            min-width: 800px;
+            position: relative;
+        }
+
+        .org-level {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--space-xl);
+            position: relative;
+        }
+
+        .org-level-1 {
+            margin-bottom: var(--space-xl);
+        }
+
+        .org-level-2 {
+            margin-bottom: var(--space-lg);
+        }
+
+        .org-node {
+            background: var(--color-white);
+            border: 2px solid var(--color-primary);
+            border-radius: var(--radius-md);
+            padding: var(--space-sm) var(--space-md);
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            transition: all var(--transition-base);
+            min-width: 200px;
+            max-width: 250px;
+        }
+
+        .org-node:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-secondary);
+        }
+
+        .org-node-primary {
+            background: linear-gradient(135deg, var(--color-primary), #7aa642);
+            color: var(--color-white);
+            border: none;
+            padding: var(--space-md);
+        }
+
+        .org-node-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .org-node-position {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Connection lines for org chart */
+        .org-connector {
+            position: absolute;
+            background-color: var(--color-gray-400);
+        }
+
+        .org-connector-horizontal {
+            height: 2px;
+            width: 100%;
+        }
+
+        .org-connector-vertical {
+            width: 2px;
+            height: var(--space-lg);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .executive-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .page-header {
+                height: 300px;
+                margin-top: 70px;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .executive-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .org-chart-container {
+                display: none;
+                /* Hide org chart on mobile - show simplified version */
+            }
+
+            .mobile-org-list {
+                display: block !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                height: 250px;
+                margin-top: 60px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .executive-photo {
+                height: 250px;
+            }
+
+            .regional-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .regional-card {
+                padding: var(--space-sm);
+            }
+
+            .regional-photo {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .executive-card {
+                margin-bottom: var(--space-md);
+            }
+
+            .executive-name {
+                font-size: 1.3rem;
+            }
+
+            .executive-position {
+                font-size: 1rem;
+            }
+        }
+
+        /* Mobile-friendly org list (alternative to chart) */
+        .mobile-org-list {
+            display: none;
+            margin-top: var(--space-xl);
+        }
+
+        .org-list-item {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-md);
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--color-primary);
+        }
+
+        .org-list-item h4 {
+            color: var(--color-gray-900);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .org-list-item h4 i {
+            color: var(--color-primary);
+        }
+
+        .org-list-item ul {
+            list-style: none;
+            padding-left: 1.5rem;
+        }
+
+        .org-list-item li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--color-gray-200);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .org-list-item li:last-child {
+            border-bottom: none;
+        }
+
+        .position-badge {
+            background: var(--color-gray-200);
+            color: var(--color-gray-700);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Loading animation for images */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .executive-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .executive-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .executive-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .executive-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .executive-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .executive-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .executive-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .executive-card:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .executive-card:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .executive-card:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        .executive-card:nth-child(10) {
+            animation-delay: 1s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="static/images/logo1.png" alt="Augustinian Federation for Africa" class="logo-img">
+                    <span class="logo-text">
+                        <span class="logo-main">AUGUSTINIAN FEDERATION</span>
+                        <span class="logo-sub">FOR AFRICA</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggle" id="navbarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="executive-board.html" class="active">Executive Board</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" class="btn btn-secondary">Donate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">Executive Board</h1>
+                <p class="page-subtitle">Meet the leaders guiding the Augustinian Federation for Africa</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Executive Board Section -->
+    <section class="executive-section">
+        <div class="container">
+            <h2 class="section-title">Leadership Team</h2>
+            <p class="section-intro">
+                The Executive Board of the Augustinian Federation for Africa comprises dedicated religious leaders from
+                across the continent.
+                These individuals provide spiritual guidance, strategic direction, and administrative oversight to
+                advance the mission of AFA.
+            </p>
+
+            <div class="executive-grid">
+                <!-- President -->
+                <div class="executive-card">
+                    <div class="executive-photo">
+                        <img src="static/images/ken.jpg" alt="Rev. Fr. Kenneth Eze, OSA">
+                        <div class="executive-badge">President</div>
+                    </div>
+                    <div class="executive-details">
+                        <h3 class="executive-name">Rev. Fr. Kenneth Eze, OSA</h3>
+                        <div class="executive-position">PRESIDENT</div>
+                        <div class="executive-country">
+                            <i class="fas fa-map-marker-alt"></i> Nigeria
+                        </div>
+                        <p class="executive-affiliation">Province of Nigeria</p>
+                    </div>
+                </div>
+
+                <!-- Vice President -->
+                <div class="executive-card">
+                    <div class="executive-photo">
+                        <img src="static/images/faustin.jpg" alt="Sr. Faustine Lugadi">
+                        <div class="executive-badge">Vice President</div>
+                    </div>
+                    <div class="executive-details">
+                        <h3 class="executive-name">Sr. Faustine Lugadi</h3>
+                        <div class="executive-position">VICE PRESIDENT</div>
+                        <div class="executive-country">
+                            <i class="fas fa-map-marker-alt"></i> Congo
+                        </div>
+                        <p class="executive-affiliation">Augustines Sisters Servent of Jesus and Mary</p>
+                    </div>
+                </div>
+
+                <!-- General Secretary -->
+                <div class="executive-card">
+                    <div class="executive-photo">
+                        <img src="static/images/anaclet.jpg" alt="Rev. Fr. Anaclet Paluku, OSA">
+                        <div class="executive-badge">Secretary</div>
+                    </div>
+                    <div class="executive-details">
+                        <h3 class="executive-name">Rev. Fr. Anaclet Paluku, OSA</h3>
+                        <div class="executive-position">GENERAL SECRETARY</div>
+                        <div class="executive-country">
+                            <i class="fas fa-map-marker-alt"></i> Congo
+                        </div>
+                        <p class="executive-affiliation">Vicariate of Congo</p>
+                    </div>
+                </div>
+
+                <!-- Assistant Secretary -->
+                <div class="executive-card">
+                    <div class="executive-photo">
+                        <img src="static/images/mukari.jpg" alt="Sr. Lydia Mukari">
+                        <div class="executive-badge">Assistant Secretary</div>
+                    </div>
+                    <div class="executive-details">
+                        <h3 class="executive-name">Sr. Lydia Mukari</h3>
+                        <div class="executive-position">ASSISTANT SECRETARY</div>
+                        <div class="executive-country">
+                            <i class="fas fa-map-marker-alt"></i> Kenya
+                        </div>
+                        <p class="executive-affiliation">SMK., Kenya</p>
+                    </div>
+                </div>
+
+                <!-- Treasurer -->
+                <div class="executive-card">
+                    <div class="executive-photo">
+                        <img src="static/images/michel.jpg" alt="Sr. Jacqueline Michel">
+                        <div class="executive-badge">Treasurer</div>
+                    </div>
+                    <div class="executive-details">
+                        <h3 class="executive-name">Sr. Jacqueline Michel</h3>
+                        <div class="executive-position">TREASURER</div>
+                        <div class="executive-country">
+                            <i class="fas fa-map-marker-alt"></i> Togo
+                        </div>
+                        <p class="executive-affiliation">N.D.E, Togo</p>
+                    </div>
+                </div>
+
+                <!-- Assistant Treasurer -->
+                <div class="executive-card">
+                    <div class="executive-photo">
+                        <img src="static/images/francois.jpg" alt="Rev. Fr. Mekpato Francois de Sales, OSA">
+                        <div class="executive-badge">Assistant Treasurer</div>
+                    </div>
+                    <div class="executive-details">
+                        <h3 class="executive-name">Rev. Fr. Mekpato Francois de Sales, OSA</h3>
+                        <div class="executive-position">ASSISTANT TREASURER</div>
+                        <div class="executive-country">
+                            <i class="fas fa-map-marker-alt"></i> Belgium
+                        </div>
+                        <p class="executive-affiliation">Province of Belgium</p>
+                    </div>
+                </div>
+
+                <!-- Secretariat Coordinator -->
+                <div class="executive-card">
+                    <div class="executive-photo">
+                        <img src="static/images/tasilo.jpg" alt="Rev. Fr. Tasilo Nchimbi, OSA">
+                        <div class="executive-badge">Coordinator</div>
+                    </div>
+                    <div class="executive-details">
+                        <h3 class="executive-name">Rev. Fr. Tasilo Nchimbi, OSA</h3>
+                        <div class="executive-position">SECRETARIATE COORDINATOR</div>
+                        <div class="executive-country">
+                            <i class="fas fa-map-marker-alt"></i> Tanzania
+                        </div>
+                        <p class="executive-affiliation">Vicariate of Tanzania</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regional Representatives Section -->
+    <section class="regional-section">
+        <div class="container">
+            <h2 class="section-title">Regional Representatives</h2>
+            <p class="section-intro">
+                These representatives ensure that the diverse voices and needs of Augustinian communities across
+                Africa's regions
+                are heard and addressed within the Federation's leadership.
+            </p>
+
+            <div class="regional-grid">
+                <!-- Central African Region -->
+                <div class="regional-card">
+                    <div class="regional-photo">
+                        <img src="static/images/banga.jpg" alt="Rev. Fr. Martin Banga, OSA">
+                    </div>
+                    <div class="regional-info">
+                        <h4 class="regional-name">Rev. Fr. Martin Banga, OSA</h4>
+                        <p class="regional-role">Central African Region Representative</p>
+                        <span class="regional-region">Congo</span>
+                    </div>
+                </div>
+
+                <!-- West African Region -->
+                <div class="regional-card">
+                    <div class="regional-photo">
+                        <img src="static/images/kola.jpg" alt="Rev. Fr. Kolawole Chabi, OSA">
+                    </div>
+                    <div class="regional-info">
+                        <h4 class="regional-name">Rev. Fr. Kolawole Chabi, OSA</h4>
+                        <p class="regional-role">West African Region Representative</p>
+                        <span class="regional-region">Nigeria</span>
+                    </div>
+                </div>
+
+                <!-- East African Region -->
+                <div class="regional-card">
+                    <div class="regional-photo">
+                        <img src="static/images/musigal.jpg" alt="Rev. Fr. Ephraim Musigal, OSA">
+                    </div>
+                    <div class="regional-info">
+                        <h4 class="regional-name">Rev. Fr. Ephraim Musigal, OSA</h4>
+                        <p class="regional-role">East African Region Representative</p>
+                        <span class="regional-region">Tanzania</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Organization Chart (Desktop) -->
+    <section class="org-chart-section">
+        <div class="container">
+            <h2 class="section-title">Organizational Structure</h2>
+            <p class="section-intro">
+                The AFA Executive Board follows a hierarchical structure designed for effective governance
+                and representation across all regions of Africa.
+            </p>
+
+            <div class="org-chart-container">
+                <div class="org-chart">
+                    <!-- Level 1 - President -->
+                    <div class="org-level org-level-1">
+                        <div class="org-node org-node-primary">
+                            <div class="org-node-name">Rev. Fr. Kenneth Eze, OSA</div>
+                            <div class="org-node-position">PRESIDENT</div>
+                        </div>
+                    </div>
+
+                    <!-- Level 2 - Vice President & General Secretary -->
+                    <div class="org-level org-level-2">
+                        <div class="org-node">
+                            <div class="org-node-name">Sr. Faustine Lugadi</div>
+                            <div class="org-node-position">VICE PRESIDENT</div>
+                        </div>
+                        <div class="org-node">
+                            <div class="org-node-name">Rev. Fr. Anaclet Paluku, OSA</div>
+                            <div class="org-node-position">GENERAL SECRETARY</div>
+                        </div>
+                    </div>
+
+                    <!-- Level 3 - Assistants & Treasurer -->
+                    <div class="org-level org-level-2">
+                        <div class="org-node">
+                            <div class="org-node-name">Sr. Lydia Mukari</div>
+                            <div class="org-node-position">ASSISTANT SECRETARY</div>
+                        </div>
+                        <div class="org-node">
+                            <div class="org-node-name">Sr. Jacqueline Michel</div>
+                            <div class="org-node-position">TREASURER</div>
+                        </div>
+                        <div class="org-node">
+                            <div class="org-node-name">Rev. Fr. Mekpato Francois de Sales, OSA</div>
+                            <div class="org-node-position">ASSISTANT TREASURER</div>
+                        </div>
+                        <div class="org-node">
+                            <div class="org-node-name">Rev. Fr. Tasilo Nchimbi, OSA</div>
+                            <div class="org-node-position">SECRETARIATE COORDINATOR</div>
+                        </div>
+                    </div>
+
+                    <!-- Level 4 - Regional Representatives -->
+                    <div class="org-level org-level-2">
+                        <div class="org-node">
+                            <div class="org-node-name">Rev. Fr. Martin Banga, OSA</div>
+                            <div class="org-node-position">Central Africa Representative</div>
+                        </div>
+                        <div class="org-node">
+                            <div class="org-node-name">Rev. Fr. Kolawole Chabi, OSA</div>
+                            <div class="org-node-position">West Africa Representative</div>
+                        </div>
+                        <div class="org-node">
+                            <div class="org-node-name">Rev. Fr. Ephraim Musigal, OSA</div>
+                            <div class="org-node-position">East Africa Representative</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile-friendly Organization List -->
+            <div class="mobile-org-list">
+                <div class="org-list-item">
+                    <h4><i class="fas fa-crown"></i> Presidency</h4>
+                    <ul>
+                        <li>
+                            <span>Rev. Fr. Kenneth Eze, OSA</span>
+                            <span class="position-badge">President</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="org-list-item">
+                    <h4><i class="fas fa-users"></i> Executive Leadership</h4>
+                    <ul>
+                        <li>
+                            <span>Sr. Faustine Lugadi</span>
+                            <span class="position-badge">Vice President</span>
+                        </li>
+                        <li>
+                            <span>Rev. Fr. Anaclet Paluku, OSA</span>
+                            <span class="position-badge">General Secretary</span>
+                        </li>
+                        <li>
+                            <span>Sr. Jacqueline Michel</span>
+                            <span class="position-badge">Treasurer</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="org-list-item">
+                    <h4><i class="fas fa-hands-helping"></i> Support Team</h4>
+                    <ul>
+                        <li>
+                            <span>Sr. Lydia Mukari</span>
+                            <span class="position-badge">Assistant Secretary</span>
+                        </li>
+                        <li>
+                            <span>Rev. Fr. Mekpato Francois de Sales, OSA</span>
+                            <span class="position-badge">Assistant Treasurer</span>
+                        </li>
+                        <li>
+                            <span>Rev. Fr. Tasilo Nchimbi, OSA</span>
+                            <span class="position-badge">Secretariate Coordinator</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="org-list-item">
+                    <h4><i class="fas fa-globe-africa"></i> Regional Representatives</h4>
+                    <ul>
+                        <li>
+                            <span>Rev. Fr. Martin Banga, OSA</span>
+                            <span class="position-badge">Central Africa</span>
+                        </li>
+                        <li>
+                            <span>Rev. Fr. Kolawole Chabi, OSA</span>
+                            <span class="position-badge">West Africa</span>
+                        </li>
+                        <li>
+                            <span>Rev. Fr. Ephraim Musigal, OSA</span>
+                            <span class="position-badge">East Africa</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-logo">
+                        <img src="static/images/logo1.png" alt="Augustinian Federation for Africa"
+                            class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <span class="logo-main">Augustinian Federation</span>
+                            <span class="logo-sub">for Africa</span>
+                        </div>
+                    </div>
+                    <p class="footer-about">
+                        Uniting Augustinian communities across Africa in faith, service, and solidarity.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="executive-board.html">Executive Board</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="news.html">News & Announcements</a></li>
+                        <li><a href="news.html#newsletters">Newsletters</a></li>
+                        <li><a href="#">Annual Reports</a></li>
+                        <li><a href="#">Prayer Resources</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> AFA Curia</li>
+                        <li><i class="fas fa-envelope"></i> info@afa-osa.org</li>
+                        <li><i class="fas fa-phone"></i> +2347032150873</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2026</span> Augustinian Federation for Africa. All rights reserved.</p>
+                <p class="footer-credits">Powered by Sidasoft</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/main.js"></script>
+    <script>
+        // Executive Board page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            // Update current year in footer
+            const currentYear = new Date().getFullYear();
+            document.getElementById('currentYear').textContent = currentYear;
+
+            // Mobile navigation toggle
+            const navbarToggle = document.getElementById('navbarToggle');
+            const navbarMenu = document.getElementById('navbarMenu');
+
+            if (navbarToggle && navbarMenu) {
+                navbarToggle.addEventListener('click', () => {
+                    navbarMenu.classList.toggle('active');
+                    navbarToggle.innerHTML = navbarMenu.classList.contains('active')
+                        ? '<i class="fas fa-times"></i>'
+                        : '<i class="fas fa-bars"></i>';
+                });
+
+                // Close menu when clicking a link
+                navbarMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navbarMenu.classList.remove('active');
+                        navbarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+
+            // Lazy loading for images with fallback
+            const images = document.querySelectorAll('img');
+            const placeholderImage = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"%3E%3Crect width="400" height="300" fill="%23f0f0f0"/%3E%3Ctext x="200" y="150" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" fill="%23999"%3EImage Loading...%3C/text%3E%3C/svg%3E';
+
+            // Set placeholder for images that might not exist
+            images.forEach(img => {
+                // Store the original source
+                const originalSrc = img.src;
+
+                // Add loading class
+                img.classList.add('loading-image');
+
+                // Set placeholder initially
+                if (!img.complete) {
+                    img.src = placeholderImage;
+                    img.dataset.src = originalSrc;
+
+                    // Load the actual image
+                    const tempImg = new Image();
+                    tempImg.onload = () => {
+                        img.src = originalSrc;
+                        img.classList.remove('loading-image');
+                        img.classList.add('loaded-image');
+                    };
+                    tempImg.onerror = () => {
+                        // If image fails to load, use a default placeholder
+                        img.src = placeholderImage;
+                        img.alt = 'Image not available';
+                        img.classList.remove('loading-image');
+                        img.classList.add('error-image');
+                    };
+                    tempImg.src = originalSrc;
+                }
+            });
+
+            // Animate cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Observe executive cards
+            document.querySelectorAll('.executive-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Observe regional cards
+            document.querySelectorAll('.regional-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Tab navigation for organizational chart (for accessibility)
+            document.querySelectorAll('.executive-card, .regional-card, .org-node').forEach(element => {
+                element.setAttribute('tabindex', '0');
+                element.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        element.click();
+                    }
+                });
+            });
+
+            // Print-friendly version
+            const printButton = document.createElement('button');
+            printButton.innerHTML = '<i class="fas fa-print"></i> Print Board List';
+            printButton.className = 'btn btn-outline';
+            printButton.style.margin = '0 auto';
+            printButton.style.display = 'block';
+            printButton.addEventListener('click', () => {
+                window.print();
+            });
+
+            // Add print button before footer
+            const orgChartSection = document.querySelector('.org-chart-section .container');
+            if (orgChartSection) {
+                orgChartSection.appendChild(printButton);
+            }
+
+            // Add print styles
+            const printStyles = document.createElement('style');
+            printStyles.textContent = `
+                @media print {
+                    .header, .page-header, .breadcrumb, .navbar, 
+                    .cta-section, .footer, .social-links, 
+                    button, .btn, .mobile-org-list {
+                        display: none !important;
+                    }
+                    
+                    body {
+                        padding-top: 0 !important;
+                        font-size: 12pt;
+                    }
+                    
+                    .executive-section, .regional-section, .org-chart-section {
+                        padding: 0 !important;
+                        margin: 0 !important;
+                    }
+                    
+                    .section-title {
+                        page-break-before: always;
+                        margin-top: 2cm !important;
+                    }
+                    
+                    .executive-card {
+                        break-inside: avoid;
+                        box-shadow: none !important;
+                        border: 1px solid #ddd !important;
+                        margin-bottom: 1cm !important;
+                    }
+                    
+                    .executive-photo img {
+                        filter: grayscale(100%);
+                    }
+                    
+                    .executive-grid {
+                        display: block !important;
+                    }
+                    
+                    .executive-card {
+                        display: block !important;
+                        height: auto !important;
+                        margin-bottom: 2cm !important;
+                    }
+                }
+            `;
+            document.head.appendChild(printStyles);
+        });
+    </script>
+</body>
+
+</html>
