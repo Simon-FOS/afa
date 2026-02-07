@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | Augustinian Federation for Africa (AFA)</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Page-specific styles for Contact page */
+        :root {
+            --font-primary: 'Open Sans', sans-serif;
+            --font-secondary: 'Merriweather', serif;
+            --color-primary: #8bb94d;
+            --color-secondary: #4a6fa5;
+            --color-dark: #1a3a5f;
+            --color-light: #f8f9fa;
+            --color-gray-100: #f8f9fa;
+            --color-gray-200: #e9ecef;
+            --color-gray-300: #dee2e6;
+            --color-gray-400: #ced4da;
+            --color-gray-500: #adb5bd;
+            --color-gray-600: #6c757d;
+            --color-gray-700: #495057;
+            --color-gray-800: #343a40;
+            --color-gray-900: #212529;
+            --color-white: #ffffff;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 20px;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+            --transition-base: 0.3s ease;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--color-gray-800);
+            background-color: var(--color-light);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-secondary);
+            color: var(--color-dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .col-md-6,
+        .col-md-4,
+        .col-md-12 {
+            padding: 0 15px;
+        }
+
+        @media (min-width: 768px) {
+            .col-md-6 {
+                width: 50%;
+            }
+
+            .col-md-4 {
+                width: 33.333%;
+            }
+
+            .col-md-12 {
+                width: 100%;
+            }
+        }
+
+        /* Page Header */
+        .page-header {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            color: var(--color-white);
+            margin-top: 10px;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('static/images/afa1.jpg') center/cover no-repeat;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: var(--space-md);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin-bottom: var(--space-lg);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: var(--space-xl) 0;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        @media (max-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: linear-gradient(135deg, var(--color-dark), var(--color-secondary));
+            color: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .info-title {
+            font-size: 2rem;
+            margin-bottom: var(--space-lg);
+            color: var(--color-white);
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--space-lg);
+            padding-bottom: var(--space-md);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .info-icon {
+            background: rgba(255, 255, 255, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: var(--space-md);
+            flex-shrink: 0;
+        }
+
+        .info-icon i {
+            font-size: 1.5rem;
+            color: var(--color-white);
+        }
+
+        .info-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: var(--space-xs);
+            color: var(--color-white);
+        }
+
+        .info-content p {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
+            margin-bottom: var(--space-xs);
+        }
+
+        .info-content a {
+            color: var(--color-primary);
+            text-decoration: none;
+            transition: color var(--transition-base);
+        }
+
+        .info-content a:hover {
+            color: var(--color-white);
+            text-decoration: underline;
+        }
+
+        /* Social Links */
+        .contact-social {
+            margin-top: var(--space-xl);
+        }
+
+        .social-title {
+            font-size: 1.2rem;
+            margin-bottom: var(--space-md);
+            color: var(--color-white);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: var(--space-sm);
+        }
+
+        .social-icon {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-white);
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+
+        .social-icon:hover {
+            background: var(--color-primary);
+            transform: translateY(-3px);
+        }
+
+        /* Contact Form */
+        .contact-form-container {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--color-gray-200);
+        }
+
+        .form-title {
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+            color: var(--color-dark);
+        }
+
+        .form-intro {
+            color: var(--color-gray-600);
+            margin-bottom: var(--space-lg);
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--color-gray-800);
+        }
+
+        .form-label .required {
+            color: #e74c3c;
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            padding: 0.85rem 1rem;
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: var(--font-primary);
+            transition: all var(--transition-base);
+            background: var(--color-white);
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(139, 185, 77, 0.1);
+        }
+
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Language Selection */
+        .language-selection {
+            display: flex;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xs);
+        }
+
+        .language-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .language-radio {
+            display: none;
+        }
+
+        .language-label {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .language-radio:checked+.language-label {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .language-flag {
+            font-size: 1.2rem;
+        }
+
+        /* File Upload */
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .file-input {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            padding: 1rem;
+            background: var(--color-gray-100);
+            border: 2px dashed var(--color-gray-300);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            text-align: center;
+        }
+
+        .file-label:hover {
+            border-color: var(--color-primary);
+            background: var(--color-gray-200);
+        }
+
+        .file-name {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--color-gray-600);
+        }
+
+        /* Form Buttons */
+        .form-buttons {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        @media (max-width: 768px) {
+            .form-buttons {
+                flex-direction: column;
+            }
+        }
+
+        .submit-btn {
+            flex: 1;
+            background: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background: #7aa642;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .reset-btn {
+            flex: 1;
+            background: var(--color-gray-200);
+            color: var(--color-gray-800);
+            border: 1px solid var(--color-gray-300);
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .reset-btn:hover {
+            background: var(--color-gray-300);
+        }
+
+        /* Success/Error Messages */
+        .message-container {
+            display: none;
+            padding: var(--space-lg);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-lg);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .message-container.success {
+            display: block;
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message-container.error {
+            display: block;
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .message-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .message-header i {
+            font-size: 1.5rem;
+        }
+
+        /* Office Locations */
+        .locations-section {
+            background: var(--color-gray-100);
+            padding: var(--space-xl) 0;
+            margin-top: var(--space-xl);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: var(--space-xl);
+            color: var(--color-dark);
+        }
+
+        .location-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+
+        .location-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+        }
+
+        .location-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .location-header {
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-dark));
+            color: var(--color-white);
+            padding: var(--space-lg);
+            text-align: center;
+        }
+
+        .location-name {
+            font-size: 1.5rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .location-role {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .location-body {
+            padding: var(--space-lg);
+        }
+
+        .location-details {
+            margin-bottom: var(--space-md);
+        }
+
+        .location-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-sm);
+        }
+
+        .location-detail i {
+            color: var(--color-primary);
+            margin-top: 0.2rem;
+        }
+
+        /* Map Section */
+        .map-section {
+            padding: var(--space-xl) 0;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            margin-top: var(--space-lg);
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: var(--space-xl) 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--color-white);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--space-sm);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--color-gray-200);
+        }
+
+        .faq-question {
+            padding: var(--space-md);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background var(--transition-base);
+        }
+
+        .faq-question:hover {
+            background: var(--color-gray-100);
+        }
+
+        .faq-question i {
+            transition: transform var(--transition-base);
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 var(--space-md);
+            max-height: 0;
+            overflow: hidden;
+            transition: all var(--transition-base);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: var(--space-md);
+            max-height: 500px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .page-header {
+                height: 300px;
+                margin-top: 70px;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .contact-container {
+                gap: var(--space-lg);
+            }
+
+            .contact-info,
+            .contact-form-container {
+                padding: var(--space-lg);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header {
+                height: 250px;
+                margin-top: 60px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .info-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .info-icon {
+                margin-bottom: var(--space-sm);
+            }
+
+            .location-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .location-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .location-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .location-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .location-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="static/images/logo1.png" alt="Augustinian Federation for Africa" class="logo-img">
+                    <span class="logo-text">
+                        <span class="logo-main">AUGUSTINIAN FEDERATION</span>
+                        <span class="logo-sub">OF AFRICA</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggle" id="navbarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="executive-board.html">Executive Board</a></li>
+                    <li><a href="event.html">Events</a></li>
+                    <li><a href="news.html">News</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="#" class="btn btn-secondary">Donate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">Contact Us</h1>
+                <p class="page-subtitle">Get in touch with the Augustinian Federation of Africa. We're here to answer
+                    your questions and connect you with our community.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-container">
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2 class="info-title">Get In Touch</h2>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Our Address</h4>
+                            <p>AFA Curia<br>
+                                Augustinian Federation of Africa<br>
+                                St. Francis Priory<br>
+                                Makurdi, Benue State, Nigeria.</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Email Address</h4>
+                            <p>
+                                <strong>General Inquiries:</strong><br>
+                                <a href="mailto:info@afa-osa.org">info@afa-osa.org</a><br><br>
+
+
+                                <strong>Secretariat:</strong><br>
+                                <a href="mailto:secretariat@afa-osa.org">secretariat@afa-osa.org</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Phone Numbers</h4>
+                            <p>
+                                <strong>Office:</strong> +234 703 215 0873<br>
+                                <strong>Mobile:</strong> +233 24 456 7890<br>
+                                <strong>Fax:</strong> +233 30 123 4567
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <div class="info-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Office Hours</h4>
+                            <p>
+                                <strong>Monday - Friday:</strong> 8:00 AM - 5:00 PM (GMT)<br>
+                                <strong>Saturday:</strong> 9:00 AM - 1:00 PM<br>
+                                <strong>Sunday:</strong> Closed
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Social Links -->
+                    <div class="contact-social">
+                        <h4 class="social-title">Connect With Us</h4>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-youtube"></i>
+                            </a>
+                            <a href="#" class="social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2 class="form-title">Send Us a Message</h2>
+                    <p class="form-intro">
+                        Have questions, suggestions, or need assistance? Fill out the form below and we'll get back to
+                        you as soon as possible. All correspondence will be directed to
+                        <strong>afa@gmail.com</strong>.
+                    </p>
+
+                    <!-- Success/Error Message Container -->
+                    <div id="messageContainer" class="message-container">
+                        <div class="message-header">
+                            <i class="fas fa-check-circle"></i>
+                            <h3>Message Sent Successfully!</h3>
+                        </div>
+                        <p id="messageText">Thank you for contacting us. We will respond to your message shortly.</p>
+                    </div>
+
+                    <form class="contact-form" id="contactForm" action="https://formspree.io/f/mbjnnlyz" method="POST">
+                        <!-- Hidden field to specify recipient -->
+                        <input type="hidden" name="_replyto" value="kenudo23@gmail.com">
+                        <input type="hidden" name="_subject" value="AFA Website Contact Form Submission">
+                        <input type="hidden" name="_cc" value="info@afa-osa.org">
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">First Name <span class="required">*</span></label>
+                                <input type="text" class="form-input" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name <span class="required">*</span></label>
+                                <input type="text" class="form-input" name="lastName" required>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Email Address <span class="required">*</span></label>
+                                <input type="email" class="form-input" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-input" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Country/Region <span class="required">*</span></label>
+                            <select class="form-select" name="country" required>
+                                <option value="">Select your country</option>
+                                <option value="Ghana">Ghana</option>
+                                <option value="Nigeria">Nigeria</option>
+                                <option value="Kenya">Kenya</option>
+                                <option value="Tanzania">Tanzania</option>
+                                <option value="Uganda">Uganda</option>
+                                <option value="South Africa">South Africa</option>
+                                <option value="DR Congo">DR Congo</option>
+                                <option value="Ethiopia">Ethiopia</option>
+                                <option value="Cameroon">Cameroon</option>
+                                <option value="Ivory Coast">Ivory Coast</option>
+                                <option value="Other">Other African Country</option>
+                                <option value="Non-African">Outside Africa</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Inquiry Type <span class="required">*</span></label>
+                            <select class="form-select" name="inquiryType" required>
+                                <option value="">Select inquiry type</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Membership">Membership Information</option>
+                                <option value="Event">Event Information</option>
+                                <option value="News Submission">News/Article Submission</option>
+                                <option value="Donation">Donation Question</option>
+                                <option value="Partnership">Partnership Opportunity</option>
+                                <option value="Spiritual Guidance">Spiritual Guidance</option>
+                                <option value="Website Feedback">Website Feedback</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Preferred Language</label>
+                            <div class="language-selection">
+                                <div class="language-option">
+                                    <input type="radio" id="langEnglish" name="language" value="English"
+                                        class="language-radio" checked>
+                                    <label for="langEnglish" class="language-label">
+                                        <span class="language-flag">🇬🇧</span>
+                                        English
+                                    </label>
+                                </div>
+                                <div class="language-option">
+                                    <input type="radio" id="langFrench" name="language" value="French"
+                                        class="language-radio">
+                                    <label for="langFrench" class="language-label">
+                                        <span class="language-flag">🇫🇷</span>
+                                        Français
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label class="form-label">Your Message <span class="required">*</span></label>
+                            <textarea class="form-textarea" name="message"
+                                placeholder="Please type your message here..." required></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label class="form-label">Attachment (Optional)</label>
+                            <div class="file-upload">
+                                <input type="file" id="attachment" name="attachment" class="file-input"
+                                    accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                <label for="attachment" class="file-label">
+                                    <i class="fas fa-paperclip"></i>
+                                    <span>Click to attach a file (PDF, DOC, JPG, PNG - Max 5MB)</span>
+                                </label>
+                            </div>
+                            <div id="fileName" class="file-name"></div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <div style="display: flex; align-items: center; gap: 0.5rem;">
+                                <input type="checkbox" id="newsletter" name="newsletter" checked>
+                                <label for="newsletter">Subscribe to our newsletter for updates</label>
+                            </div>
+                        </div>
+
+                        <div class="form-buttons">
+                            <button type="submit" class="submit-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                            <button type="reset" class="reset-btn" id="resetForm">
+                                <i class="fas fa-redo"></i>
+                                Clear Form
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Locations -->
+    <section class="locations-section">
+        <div class="container">
+            <h2 class="section-title">Our Regional Contacts</h2>
+            <div class="location-cards">
+                <!-- Regional Office 1 -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <h3 class="location-name">West Africa Office</h3>
+                        <p class="location-role">Regional Coordinator</p>
+                    </div>
+                    <div class="location-body">
+                        <div class="location-details">
+                            <div class="location-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Address:</strong><br>
+                                    St. Francis Priory<br>
+                                    Makurdi, Benue State, Nigeria.
+                                </div>
+                            </div>
+                            <div class="location-detail">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <strong>Phone:</strong><br>
+                                    +233 24 456 7890
+                                </div>
+                            </div>
+                            <div class="location-detail">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email:</strong><br>
+                                    westafrica@afa-osa.org
+                                </div>
+                            </div>
+                        </div>
+                        <p><strong>Coverage:</strong> Ghana, Nigeria, Ivory Coast, Senegal, Cameroon</p>
+                    </div>
+                </div>
+
+                <!-- Regional Office 2 -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <h3 class="location-name">East Africa Office</h3>
+                        <p class="location-role">Regional Coordinator</p>
+                    </div>
+                    <div class="location-body">
+                        <div class="location-details">
+                            <div class="location-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Address:</strong><br>
+                                    Augustinian Centre<br>
+                                    Nairobi, Kenya
+                                </div>
+                            </div>
+                            <div class="location-detail">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <strong>Phone:</strong><br>
+                                    +254 722 123 456
+                                </div>
+                            </div>
+                            <div class="location-detail">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email:</strong><br>
+                                    eastafrica@afa-osa.org
+                                </div>
+                            </div>
+                        </div>
+                        <p><strong>Coverage:</strong> Kenya, Tanzania, Uganda, Rwanda, Ethiopia</p>
+                    </div>
+                </div>
+
+                <!-- Regional Office 3 -->
+                <div class="location-card">
+                    <div class="location-header">
+                        <h3 class="location-name">Central/Southern Africa</h3>
+                        <p class="location-role">Regional Coordinator</p>
+                    </div>
+                    <div class="location-body">
+                        <div class="location-details">
+                            <div class="location-detail">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Address:</strong><br>
+                                    Augustinian Mission<br>
+                                    Johannesburg, South Africa
+                                </div>
+                            </div>
+                            <div class="location-detail">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <strong>Phone:</strong><br>
+                                    +27 11 234 5678
+                                </div>
+                            </div>
+                            <div class="location-detail">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email:</strong><br>
+                                    centralsouth@afa-osa.org
+                                </div>
+                            </div>
+                        </div>
+                        <p><strong>Coverage:</strong> South Africa, DR Congo, Zambia, Zimbabwe, Malawi</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How long does it take to receive a response to my inquiry?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We strive to respond to all inquiries within 2-3 business days. For urgent matters, please
+                            indicate "URGENT" in your subject line or call our office directly during business hours.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Can I submit news articles or event information from my region?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes! We welcome news submissions from all AFA members across Africa. Please use the "News
+                            Submission" option in the inquiry type dropdown above. All submissions are reviewed by our
+                            editorial team and may be featured on our website or in our newsletter.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you provide French language support?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we are a bilingual organization. You can select French as your preferred language in the
+                            contact form, and we will respond in French. Many of our resources are also available in
+                            both English and French versions.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How can I become a member of AFA?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Membership is open to all Augustinian communities, institutions, and individuals across
+                            Africa. Please select "Membership Information" as your inquiry type, and we will send you
+                            the membership application package with detailed instructions.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Where should I send my donation or financial contribution?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For donation inquiries, please select "Donation Question" as your inquiry type. We will
+                            provide you with secure payment options, bank details, and information about how your
+                            contribution supports our mission across Africa.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-logo">
+                        <img src="static/images/logo1.png" alt="Augustinian Federation for Africa"
+                            class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <span class="logo-main">Augustinian Federation</span>
+                            <span class="logo-sub">of Africa</span>
+                        </div>
+                    </div>
+                    <p class="footer-about">
+                        Uniting Augustinian family across Africa in faith, service, and solidarity.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="executive-board.html">Executive Board</a></li>
+                        <li><a href="event.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="news.html">News & Announcements</a></li>
+                        <li><a href="news.html#newsletters">Newsletters</a></li>
+                        <li><a href="#">Annual Reports</a></li>
+                        <li><a href="#">Prayer Resources</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> AFA Curia</li>
+                        <li><i class="fas fa-envelope"></i> info@afa-osa.org</li>
+                        <li><i class="fas fa-phone"></i> +2347032150873</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2026</span> Augustinian Federation of Africa. All rights reserved.</p>
+                <p class="footer-credits">Powered by Sidasoft</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/main.js"></script>
+    <script>
+        // Contact page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            // Update current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // Mobile navigation toggle
+            const navbarToggle = document.getElementById('navbarToggle');
+            const navbarMenu = document.getElementById('navbarMenu');
+
+            if (navbarToggle && navbarMenu) {
+                navbarToggle.addEventListener('click', () => {
+                    navbarMenu.classList.toggle('active');
+                    navbarToggle.innerHTML = navbarMenu.classList.contains('active')
+                        ? '<i class="fas fa-times"></i>'
+                        : '<i class="fas fa-bars"></i>';
+                });
+
+                navbarMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navbarMenu.classList.remove('active');
+                        navbarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+
+            // FAQ Accordion
+            const faqQuestions = document.querySelectorAll('.faq-question');
+            faqQuestions.forEach(question => {
+                question.addEventListener('click', () => {
+                    const faqItem = question.parentElement;
+                    faqItem.classList.toggle('active');
+                });
+            });
+
+            // File Upload Display
+            const fileInput = document.getElementById('attachment');
+            const fileNameDisplay = document.getElementById('fileName');
+
+            if (fileInput && fileNameDisplay) {
+                fileInput.addEventListener('change', function () {
+                    if (this.files.length > 0) {
+                        const file = this.files[0];
+
+                        // Check file size (max 5MB)
+                        if (file.size > 5 * 1024 * 1024) {
+                            alert('File size exceeds 5MB limit. Please choose a smaller file.');
+                            this.value = '';
+                            fileNameDisplay.textContent = '';
+                            return;
+                        }
+
+                        // Check file type
+                        const allowedTypes = [
+                            'application/pdf',
+                            'application/msword',
+                            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                            'image/jpeg',
+                            'image/jpg',
+                            'image/png'
+                        ];
+
+                        if (!allowedTypes.includes(file.type)) {
+                            alert('File type not supported. Please upload a PDF, DOC, JPG, or PNG file.');
+                            this.value = '';
+                            fileNameDisplay.textContent = '';
+                            return;
+                        }
+
+                        fileNameDisplay.textContent = `Selected file: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
+                    } else {
+                        fileNameDisplay.textContent = '';
+                    }
+                });
+            }
+
+            // Form Reset
+            const resetBtn = document.getElementById('resetForm');
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.getElementById('contactForm').reset();
+                    if (fileNameDisplay) {
+                        fileNameDisplay.textContent = '';
+                    }
+
+                    // Show reset confirmation
+                    showMessage('Form has been reset. You can start over.', 'success');
+                });
+            }
+
+            // Form Submission Handling
+            const contactForm = document.getElementById('contactForm');
+            const messageContainer = document.getElementById('messageContainer');
+            const messageText = document.getElementById('messageText');
+
+            function showMessage(text, type) {
+                messageText.textContent = text;
+                messageContainer.className = 'message-container ' + type;
+                messageContainer.style.display = 'block';
+
+                // Scroll to message
+                messageContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    messageContainer.style.display = 'none';
+                }, 5000);
+            }
+
+            if (contactForm) {
+                // For production, you would use Formspree or your own backend
+                // This example uses Formspree with the email kenudo23@gmail.com
+
+                contactForm.addEventListener('submit', function (e) {
+                    // Basic form validation
+                    const requiredFields = this.querySelectorAll('[required]');
+                    let isValid = true;
+
+                    requiredFields.forEach(field => {
+                        if (!field.value.trim()) {
+                            isValid = false;
+                            field.style.borderColor = '#e74c3c';
+                        } else {
+                            field.style.borderColor = '';
+                        }
+                    });
+
+                    if (!isValid) {
+                        e.preventDefault();
+                        showMessage('Please fill in all required fields marked with *', 'error');
+                        return;
+                    }
+
+                    // Email validation
+                    const emailField = this.querySelector('input[type="email"]');
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (emailField && !emailRegex.test(emailField.value)) {
+                        e.preventDefault();
+                        emailField.style.borderColor = '#e74c3c';
+                        showMessage('Please enter a valid email address', 'error');
+                        return;
+                    }
+
+                    // If using Formspree, let it handle the submission
+                    // For demonstration, we'll show a success message
+                    // In production, remove this and let Formspree handle it
+                    e.preventDefault();
+
+                    // Get form data for display
+                    const formData = new FormData(this);
+                    const formValues = {};
+                    formData.forEach((value, key) => {
+                        formValues[key] = value;
+                    });
+
+                    console.log('Form submission data:', formValues);
+                    console.log('This would be sent to: ogbanjesi@gmail.com');
+
+                    // Show success message
+                    showMessage(`Thank you, ${formValues.firstName || 'there'}! Your message has been sent to ogbanjesi@gmail.com. We will respond within 2-3 business days.`, 'success');
+
+                    // Reset form
+                    this.reset();
+                    if (fileNameDisplay) {
+                        fileNameDisplay.textContent = '';
+                    }
+
+                    // In production, you would remove the preventDefault() above
+                    // and let Formspree handle the actual submission
+                });
+            }
+
+            // Form field focus effects
+            const formInputs = document.querySelectorAll('.form-input, .form-select, .form-textarea');
+            formInputs.forEach(input => {
+                input.addEventListener('focus', function () {
+                    this.parentElement.style.transform = 'translateY(-2px)';
+                });
+
+                input.addEventListener('blur', function () {
+                    this.parentElement.style.transform = 'translateY(0)';
+                });
+            });
+
+            // Language selection enhancement
+            const languageOptions = document.querySelectorAll('.language-option');
+            languageOptions.forEach(option => {
+                option.addEventListener('click', function () {
+                    const radio = this.querySelector('.language-radio');
+                    radio.checked = true;
+
+                    // Update all labels
+                    languageOptions.forEach(opt => {
+                        opt.querySelector('.language-label').classList.remove('selected');
+                    });
+                    this.querySelector('.language-label').classList.add('selected');
+                });
+            });
+
+            // Add smooth scroll animation for location cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.location-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Add confirmation for form reset
+            if (resetBtn) {
+                resetBtn.addEventListener('click', function (e) {
+                    if (contactForm.querySelectorAll('input, textarea, select').some(field => field.value)) {
+                        if (!confirm('Are you sure you want to clear all form fields?')) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    }
+                    return true;
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

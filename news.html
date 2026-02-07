@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Resources | Augustinian Federation for Africa (AFA)</title>
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Page-specific styles for News page */
+        :root {
+            --font-primary: 'Open Sans', sans-serif;
+            --font-secondary: 'Merriweather', serif;
+            --color-primary: #8bb94d;
+            --color-secondary: #F01778;
+            --color-dark: #bb057e;
+            --color-light: #f8f9fa;
+            --color-gray-100: #f8f9fa;
+            --color-gray-200: #e9ecef;
+            --color-gray-300: #dee2e6;
+            --color-gray-400: #ced4da;
+            --color-gray-500: #adb5bd;
+            --color-gray-600: #6c757d;
+            --color-gray-700: #495057;
+            --color-gray-800: #343a40;
+            --color-gray-900: #212529;
+            --color-white: #ffffff;
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --radius-lg: 12px;
+            --radius-xl: 20px;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+            --transition-base: 0.3s ease;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            color: var(--color-gray-800);
+            background-color: var(--color-light);
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: var(--font-secondary);
+            color: var(--color-dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--space-md);
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -15px;
+        }
+
+        .col-md-4,
+        .col-md-6,
+        .col-md-8,
+        .col-md-12 {
+            padding: 0 15px;
+        }
+
+        @media (min-width: 768px) {
+            .col-md-4 {
+                width: 33.333%;
+            }
+
+            .col-md-6 {
+                width: 50%;
+            }
+
+            .col-md-8 {
+                width: 66.666%;
+            }
+
+            .col-md-12 {
+                width: 100%;
+            }
+        }
+
+        /* Page Header */
+        .page-header {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            color: var(--color-white);
+            margin-top: 10px;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('static/images/mission.jpg') center/cover no-repeat;
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .page-title {
+            font-size: 3.5rem;
+            margin-bottom: var(--space-md);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin-bottom: var(--space-lg);
+        }
+
+        /* Page Content Layout */
+        .news-section {
+            padding: var(--space-xl) 0;
+        }
+
+        .news-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+        }
+
+        /* News Filter */
+        .news-filter {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-md);
+            box-shadow: var(--shadow-md);
+            margin-bottom: var(--space-lg);
+            border: 1px solid var(--color-gray-200);
+        }
+
+        .filter-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+
+        .filter-title {
+            font-size: 1.5rem;
+            color: var(--color-gray-900);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .filter-title i {
+            color: var(--color-primary);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: var(--space-sm);
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.25rem;
+            background: var(--color-gray-100);
+            border: 1px solid var(--color-gray-300);
+            border-radius: 50px;
+            color: var(--color-gray-700);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        /* News Grid */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+
+        /* News Card */
+        .news-card {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-base);
+            border: 1px solid var(--color-gray-200);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--color-primary);
+        }
+
+        .news-card.featured {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            border: 2px solid var(--color-secondary);
+        }
+
+        @media (max-width: 768px) {
+            .news-card.featured {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--color-secondary);
+            color: var(--color-white);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            z-index: 2;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .news-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-card.featured .news-image {
+            height: 100%;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+
+        .news-category {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--color-white);
+            color: var(--color-primary);
+            padding: 0.35rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .news-content {
+            padding: var(--space-md);
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-date {
+            color: var(--color-gray-600);
+            font-size: 0.9rem;
+            margin-bottom: var(--space-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .news-date i {
+            color: var(--color-primary);
+        }
+
+        .news-title {
+            font-size: 1.4rem;
+            color: var(--color-gray-900);
+            margin-bottom: var(--space-sm);
+            line-height: 1.3;
+        }
+
+        .news-card.featured .news-title {
+            font-size: 1.8rem;
+        }
+
+        .news-excerpt {
+            color: var(--color-gray-700);
+            line-height: 1.6;
+            margin-bottom: var(--space-md);
+            flex-grow: 1;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--color-gray-200);
+        }
+
+        .news-country {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--color-gray-600);
+            font-size: 0.9rem;
+        }
+
+        .news-country i {
+            color: var(--color-secondary);
+        }
+
+        .read-more {
+            color: var(--color-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color var(--transition-base);
+        }
+
+        .read-more:hover {
+            color: var(--color-secondary);
+            text-decoration: underline;
+        }
+
+        /* Resources Sidebar */
+        .resources-sidebar {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-gray-200);
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .sidebar-title {
+            font-size: 1.5rem;
+            color: var(--color-dark);
+            margin-bottom: var(--space-md);
+            padding-bottom: var(--space-sm);
+            border-bottom: 2px solid var(--color-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+        }
+
+        .sidebar-title i {
+            color: var(--color-primary);
+        }
+
+        /* Resource Categories */
+        .resource-categories {
+            margin-bottom: var(--space-lg);
+        }
+
+        .category-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .category-item {
+            margin-bottom: var(--space-xs);
+        }
+
+        .category-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.75rem 1rem;
+            background: var(--color-gray-100);
+            border-radius: var(--radius-md);
+            color: var(--color-gray-800);
+            text-decoration: none;
+            transition: all var(--transition-base);
+        }
+
+        .category-link:hover,
+        .category-link.active {
+            background: var(--color-primary);
+            color: var(--color-white);
+        }
+
+        .category-count {
+            background: var(--color-white);
+            color: var(--color-gray-700);
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .category-link:hover .category-count,
+        .category-link.active .category-count {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--color-white);
+        }
+
+        /* PDF Resources */
+        .pdf-resources {
+            margin-bottom: var(--space-lg);
+        }
+
+        .pdf-item {
+            display: flex;
+            align-items: center;
+            padding: var(--space-md) 0;
+            border-bottom: 1px solid var(--color-gray-200);
+        }
+
+        .pdf-item:last-child {
+            border-bottom: none;
+        }
+
+        .pdf-icon {
+            font-size: 2rem;
+            color: var(--color-secondary);
+            margin-right: var(--space-md);
+            flex-shrink: 0;
+        }
+
+        .pdf-info {
+            flex-grow: 1;
+        }
+
+        .pdf-title {
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+            color: var(--color-gray-900);
+        }
+
+        .pdf-meta {
+            display: flex;
+            gap: var(--space-md);
+            font-size: 0.85rem;
+            color: var(--color-gray-600);
+            margin-bottom: 0.5rem;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--color-primary);
+            color: var(--color-white);
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all var(--transition-base);
+        }
+
+        .download-btn:hover {
+            background: var(--color-secondary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--color-dark), var(--color-secondary));
+            color: var(--color-white);
+            padding: var(--space-xl) 0;
+            margin: var(--space-xl) 0;
+            border-radius: var(--radius-lg);
+        }
+
+        .newsletter-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-title {
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+        }
+
+        @media (max-width: 768px) {
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+
+        .newsletter-input {
+            flex-grow: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+        }
+
+        .newsletter-btn {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--transition-base);
+        }
+
+        .newsletter-btn:hover {
+            background: #7aa642;
+        }
+
+        /* Upload Section */
+        .upload-section {
+            background: var(--color-white);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-gray-200);
+            margin-top: var(--space-xl);
+        }
+
+        .upload-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .upload-header i {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .upload-info {
+            background: var(--color-gray-100);
+            border-left: 4px solid var(--color-primary);
+            padding: var(--space-md);
+            margin-bottom: var(--space-lg);
+            font-size: 0.95rem;
+            border-radius: 0 var(--radius-md) var(--radius-md) 0;
+        }
+
+        .upload-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+
+        @media (max-width: 768px) {
+            .upload-form {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: var(--color-gray-800);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.75rem;
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            transition: border-color var(--transition-base);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(139, 185, 77, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .file-upload {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-upload input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .file-upload-label {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+            padding: 1rem;
+            background: var(--color-gray-100);
+            border: 2px dashed var(--color-gray-300);
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: all var(--transition-base);
+            text-align: center;
+        }
+
+        .file-upload-label:hover {
+            border-color: var(--color-primary);
+            background: var(--color-gray-200);
+        }
+
+        .upload-btn {
+            grid-column: 1 / -1;
+            background: var(--color-primary);
+            color: var(--color-white);
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--transition-base);
+            margin-top: var(--space-md);
+        }
+
+        .upload-btn:hover {
+            background: var(--color-secondary);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-sm);
+            margin-top: var(--space-xl);
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--color-gray-300);
+            border-radius: var(--radius-md);
+            background: var(--color-white);
+            color: var(--color-gray-700);
+            cursor: pointer;
+            transition: all var(--transition-base);
+        }
+
+        .page-btn:hover:not(.disabled) {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .page-btn.active {
+            background: var(--color-primary);
+            color: var(--color-white);
+            border-color: var(--color-primary);
+        }
+
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .news-container {
+                grid-template-columns: 1fr;
+            }
+
+            .resources-sidebar {
+                position: static;
+            }
+
+            .news-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                height: 300px;
+                margin-top: 70px;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .filter-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: var(--space-md);
+            }
+
+            .filter-buttons {
+                width: 100%;
+                overflow-x: auto;
+                padding-bottom: 0.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-header {
+                height: 250px;
+                margin-top: 60px;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .page-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .news-meta {
+                flex-direction: column;
+                gap: var(--space-sm);
+                align-items: flex-start;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+
+
+
+        /* Language Buttons for Downloads */
+        .language-buttons {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .download-btn.english {
+            background: var(--color-primary);
+        }
+
+        .download-btn.french {
+            background: var(--color-secondary);
+        }
+
+        .download-btn {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--color-white);
+            padding: 0.5rem 0.75rem;
+            border-radius: var(--radius-sm);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all var(--transition-base);
+            text-align: center;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-sm);
+            opacity: 0.9;
+        }
+
+        .download-btn.english:hover {
+            background: #7aa642;
+            /* Darker shade of primary */
+        }
+
+        .download-btn.french:hover {
+            background: #3a5a8c;
+            /* Darker shade of secondary */
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .language-buttons {
+                flex-direction: column;
+            }
+        }
+
+        .news-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .news-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .news-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .news-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .news-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .news-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .news-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .news-card:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .news-card:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <img src="static/images/logo1.png" alt="Augustinian Federation for Africa" class="logo-img">
+                    <span class="logo-text">
+                        <span class="logo-main">AUGUSTINIAN FEDERATION</span>
+                        <span class="logo-sub">OF AFRICA</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggle" id="navbarToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <ul class="navbar-menu" id="navbarMenu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="executive-board.html">Executive Board</a></li>
+                    <li><a href="event.html">Events</a></li>
+                    <li><a href="news.html" class="active">News</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" class="btn btn-secondary">Donate</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h1 class="page-title">News & Resources</h1>
+                <p class="page-subtitle">Stay updated with the latest news from AFA members across Africa. Download
+                    newsletters, reports, and spiritual resources.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="news-section">
+        <div class="container">
+            <div class="news-container">
+                <!-- Main News Content -->
+                <div class="main-news">
+                    <!-- News Filter -->
+                    <div class="news-filter">
+                        <div class="filter-header">
+                            <h3 class="filter-title"><i class="fas fa-newspaper"></i> Latest News</h3>
+                            <div class="filter-buttons">
+                                <button class="filter-btn active" data-filter="all">All News</button>
+                                <button class="filter-btn" data-filter="announcement">Announcements</button>
+                                <button class="filter-btn" data-filter="event">Event Updates</button>
+                                <button class="filter-btn" data-filter="spiritual">Spiritual</button>
+                                <button class="filter-btn" data-filter="project">Projects</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- News Grid -->
+                    <div class="news-grid" id="newsGrid">
+                        <!-- Featured News -->
+                        <article class="news-card featured" data-category="announcement">
+                            <div class="news-image">
+                                <img src="static/images/even1.jpeg" alt="AFA General Assembly 2026">
+                                <div class="featured-badge">Featured</div>
+                                <div class="news-category">Announcement</div>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-date"><i class="far fa-calendar"></i> January 15, 2026</div>
+                                <h3 class="news-title">AFA Announces General Assembly 2026 in Ghana</h3>
+                                <p class="news-excerpt">The Augustinian Federation of Africa is pleased to announce the
+                                    2026 General Assembly will be held in Accra, Ghana. This gathering will bring
+                                    together Augustinian communities from across the continent to reflect on our shared
+                                    mission and plan for the future.</p>
+                                <div class="news-meta">
+                                    <div class="news-country">
+                                        <i class="fas fa-map-marker-alt"></i> Ghana
+                                    </div>
+                                    <a href="#" class="read-more">Read Full Story <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- News Item 1 -->
+                        <article class="news-card" data-category="spiritual">
+                            <div class="news-image">
+                                <img src="static/images/eve3.jpg" alt="Spiritual Retreat">
+                                <div class="news-category">Spiritual</div>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-date"><i class="far fa-calendar"></i> December 10, 2025</div>
+                                <h3 class="news-title">Annual Retreat for Augustinian Sisters Concludes</h3>
+                                <p class="news-excerpt">Over 150 Augustinian sisters from across East Africa concluded
+                                    their annual spiritual retreat in Nairobi, focusing on the theme "Living Our
+                                    Augustinian Charism in Contemporary Africa."</p>
+                                <div class="news-meta">
+                                    <div class="news-country">
+                                        <i class="fas fa-map-marker-alt"></i> Kenya
+                                    </div>
+                                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- News Item 2 -->
+                        <article class="news-card" data-category="project">
+                            <div class="news-image">
+                                <img src="static/images/edu1.jpeg" alt="Education Project">
+                                <div class="news-category">Project</div>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-date"><i class="far fa-calendar"></i> November 25, 2025</div>
+                                <h3 class="news-title">New School Opens in Rural Tanzania</h3>
+                                <p class="news-excerpt">AFA-supported primary school opens in rural Tanzania, providing
+                                    education to over 200 children. The project was made possible through collaboration
+                                    with local Augustinian communities.</p>
+                                <div class="news-meta">
+                                    <div class="news-country">
+                                        <i class="fas fa-map-marker-alt"></i> Tanzania
+                                    </div>
+                                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- News Item 3 -->
+                        <article class="news-card" data-category="event">
+                            <div class="news-image">
+                                <img src="static/images/news-youth.jpg" alt="Youth Conference">
+                                <div class="news-category">Event</div>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-date"><i class="far fa-calendar"></i> October 18, 2025</div>
+                                <h3 class="news-title">Youth Leadership Conference Draws 300 Participants</h3>
+                                <p class="news-excerpt">Young Augustinians from 12 African countries gathered in Lagos
+                                    for a week-long leadership conference focused on applying Augustinian values to
+                                    contemporary challenges.</p>
+                                <div class="news-meta">
+                                    <div class="news-country">
+                                        <i class="fas fa-map-marker-alt"></i> Nigeria
+                                    </div>
+                                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- News Item 4 -->
+                        <article class="news-card" data-category="announcement">
+                            <div class="news-image">
+                                <img src="static/images/news-partnership.jpg" alt="Partnership Announcement">
+                                <div class="news-category">Announcement</div>
+                            </div>
+                            <div class="news-content">
+                                <div class="news-date"><i class="far fa-calendar"></i> September 5, 2025</div>
+                                <h3 class="news-title">AFA Forms Partnership with Catholic Relief Services</h3>
+                                <p class="news-excerpt">The Augustinian Federation of Africa announces a new partnership
+                                    with Catholic Relief Services to enhance community development projects across the
+                                    continent.</p>
+                                <div class="news-meta">
+                                    <div class="news-country">
+                                        <i class="fas fa-map-marker-alt"></i> Pan-Africa
+                                    </div>
+                                    <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- No News Message -->
+                    <div id="noNewsMessage" class="text-center" style="display: none; padding: var(--space-xl);">
+                        <i class="fas fa-newspaper"
+                            style="font-size: 4rem; color: var(--color-gray-400); margin-bottom: var(--space-md);"></i>
+                        <h3>No News Found</h3>
+                        <p>Try adjusting your filters or check back later for updates.</p>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="page-btn disabled" id="prevPage">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="page-btn active">1</button>
+                        <button class="page-btn">2</button>
+                        <button class="page-btn">3</button>
+                        <button class="page-btn" id="nextPage">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Resources Sidebar -->
+                <aside class="resources-sidebar">
+                    <div class="resource-categories">
+                        <h3 class="sidebar-title"><i class="fas fa-folder"></i> Resource Categories</h3>
+                        <ul class="category-list">
+                            <li class="category-item">
+                                <a href="#" class="category-link active">
+                                    <span>All Resources</span>
+                                    <span class="category-count">24</span>
+                                </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-link">
+                                    <span>Newsletters</span>
+                                    <span class="category-count">12</span>
+                                </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-link">
+                                    <span>Annual Reports</span>
+                                    <span class="category-count">5</span>
+                                </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-link">
+                                    <span>Spiritual Resources</span>
+                                    <span class="category-count">4</span>
+                                </a>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-link">
+                                    <span>Project Documents</span>
+                                    <span class="category-count">3</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- PDF Resources -->
+                    <div class="pdf-resources">
+                        <h3 class="sidebar-title"><i class="fas fa-file-pdf"></i> Latest Resources</h3>
+
+                        <div class="pdf-item">
+                            <div class="pdf-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="pdf-info">
+                                <h4 class="pdf-title">AFA Quarterly Newsletter - Q4 2025</h4>
+                                <div class="pdf-meta">
+                                    <span><i class="far fa-calendar"></i> Dec 2025</span>
+                                    <span><i class="fas fa-file-alt"></i> 2.4 MB</span>
+                                </div>
+                                <div class="language-buttons">
+                                    <a href="/static/resources/AFA NEWS ENGLISH -  2025.pdf"
+                                        class="download-btn english">
+                                        <i class="fas fa-download"></i> English
+                                    </a>
+                                    <a href="/static/resources/AFA NEWS FRIENCH1-  2025.pdf"
+                                        class="download-btn french">
+                                        <i class="fas fa-download"></i> Français
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pdf-item">
+                            <div class="pdf-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="pdf-info">
+                                <h4 class="pdf-title">AFA Directory 2025</h4>
+                                <div class="pdf-meta">
+                                    <span><i class="far fa-calendar"></i> Jan 2025</span>
+                                    <span><i class="fas fa-file-alt"></i> 2.1 MB</span>
+                                </div>
+                                <div class="language-buttons">
+                                    <a href="/static/resources/AFA DIRECT.pdf" class="download-btn english">
+                                        <i class="fas fa-download"></i> English
+                                    </a>
+                                    <a href="/static/resources/AFA DIRECT.pdf" class="download-btn french">
+                                        <i class="fas fa-download"></i> Français
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pdf-item">
+                            <div class="pdf-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="pdf-info">
+                                <h4 class="pdf-title">Retreat Guide</h4>
+                                <div class="pdf-meta">
+                                    <span><i class="far fa-calendar"></i> Nov 2025</span>
+                                    <span><i class="fas fa-file-alt"></i> 1.2 MB</span>
+                                </div>
+                                <div class="language-buttons">
+                                    <a href="#" class="download-btn english">
+                                        <i class="fas fa-download"></i> English
+                                    </a>
+                                    <a href="#" class="download-btn french">
+                                        <i class="fas fa-download"></i> Français
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Newsletter Signup -->
+                    <div class="newsletter-mini">
+                        <h3 class="sidebar-title"><i class="fas fa-envelope"></i> Stay Updated</h3>
+                        <p>Subscribe to receive our newsletter and updates directly in your inbox.</p>
+                        <form class="newsletter-form-mini">
+                            <input type="email" placeholder="Your email address" class="newsletter-input">
+                            <button type="submit" class="btn btn-primary"
+                                style="width: 100%; margin-top: var(--space-sm);">Subscribe</button>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Upload Section (for members) -->
+            <div class="upload-section">
+                <div class="upload-header">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <h2>Share News & Resources</h2>
+                </div>
+                <p class="upload-info">
+                    <strong>For AFA Members:</strong> Use this form to share news, events, or upload resources from your
+                    region. All submissions will be reviewed before publishing.
+                </p>
+
+                <form class="upload-form" id="uploadForm">
+                    <div class="form-group">
+                        <label for="uploadTitle">Title *</label>
+                        <input type="text" id="uploadTitle" placeholder="Enter title" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uploadCategory">Category *</label>
+                        <select id="uploadCategory" required>
+                            <option value="">Select category</option>
+                            <option value="announcement">Announcement</option>
+                            <option value="event">Event Update</option>
+                            <option value="spiritual">Spiritual Reflection</option>
+                            <option value="project">Project Update</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uploadCountry">Country/Region *</label>
+                        <input type="text" id="uploadCountry" placeholder="e.g., Kenya, Nigeria, etc." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uploadDate">Date *</label>
+                        <input type="date" id="uploadDate" required>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="uploadContent">Content *</label>
+                        <textarea id="uploadContent" placeholder="Write your news article or description here..."
+                            required></textarea>
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label>Upload File (PDF, Image, or Document)</label>
+                        <div class="file-upload">
+                            <input type="file" id="uploadFile" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx">
+                            <label for="uploadFile" class="file-upload-label">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <span>Click to upload or drag and drop</span>
+                            </label>
+                        </div>
+                        <small>Maximum file size: 10MB. Supported formats: PDF, JPG, PNG, DOC</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uploadContact">Your Email *</label>
+                        <input type="email" id="uploadContact" placeholder="Your email address" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="uploadPhone">Phone Number</label>
+                        <input type="tel" id="uploadPhone" placeholder="Optional phone number">
+                    </div>
+
+                    <button type="submit" class="upload-btn">
+                        <i class="fas fa-paper-plane"></i> Submit for Review
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2 class="newsletter-title">Subscribe to Our Newsletter</h2>
+                <p>Receive monthly updates, spiritual reflections, and news from Augustinian communities across Africa
+                    directly in your inbox.</p>
+
+                <form class="newsletter-form" id="newsletterForm">
+                    <input type="email" class="newsletter-input" placeholder="Your email address" required>
+                    <button type="submit" class="newsletter-btn">Subscribe Now</button>
+                </form>
+
+                <p style="margin-top: var(--space-sm); font-size: 0.9rem; opacity: 0.9;">
+                    We respect your privacy. Unsubscribe at any time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="footer-logo">
+                        <img src="static/images/logo1.png" alt="Augustinian Federation for Africa"
+                            class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <span class="logo-main">Augustinian Federation</span>
+                            <span class="logo-sub">of Africa</span>
+                        </div>
+                    </div>
+                    <p class="footer-about">
+                        Uniting Augustinian family across Africa in faith, service, and solidarity.
+                    </p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="executive-board.html">Executive Board</a></li>
+                        <li><a href="events.html">Events</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="news.html">News & Announcements</a></li>
+                        <li><a href="news.html#newsletters">Newsletters</a></li>
+                        <li><a href="#">Annual Reports</a></li>
+                        <li><a href="#">Prayer Resources</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> AFA Curia</li>
+                        <li><i class="fas fa-envelope"></i> info@afa-osa.org</li>
+                        <li><i class="fas fa-phone"></i> +2347032150873</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear">2026</span> Augustinian Federation of Africa. All rights reserved.</p>
+                <p class="footer-credits">Powered by Sidasoft</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="static/js/main.js"></script>
+    <script>
+        // News page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            // Update current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+            // Mobile navigation toggle
+            const navbarToggle = document.getElementById('navbarToggle');
+            const navbarMenu = document.getElementById('navbarMenu');
+
+            if (navbarToggle && navbarMenu) {
+                navbarToggle.addEventListener('click', () => {
+                    navbarMenu.classList.toggle('active');
+                    navbarToggle.innerHTML = navbarMenu.classList.contains('active')
+                        ? '<i class="fas fa-times"></i>'
+                        : '<i class="fas fa-bars"></i>';
+                });
+
+                navbarMenu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        navbarMenu.classList.remove('active');
+                        navbarToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+
+            // News Filtering System
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const newsCards = document.querySelectorAll('.news-card');
+            const newsGrid = document.getElementById('newsGrid');
+            const noNewsMessage = document.getElementById('noNewsMessage');
+
+            // Filter news function
+            function filterNews() {
+                let visibleCount = 0;
+                const activeFilter = document.querySelector('.filter-btn.active').dataset.filter;
+
+                newsCards.forEach(card => {
+                    const category = card.dataset.category;
+
+                    // Check if card matches filter
+                    if (activeFilter === 'all' || category === activeFilter) {
+                        card.style.display = 'flex';
+                        visibleCount++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // Show/hide no news message
+                if (visibleCount === 0) {
+                    noNewsMessage.style.display = 'block';
+                    newsGrid.style.display = 'none';
+                } else {
+                    noNewsMessage.style.display = 'none';
+                    newsGrid.style.display = 'grid';
+                }
+            }
+
+            // Filter button click handlers
+            filterButtons.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    filterButtons.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    filterNews();
+                });
+            });
+
+            // Resource Category Selection
+            const categoryLinks = document.querySelectorAll('.category-link');
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    categoryLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+
+                    // In a real implementation, this would filter resources
+                    console.log(`Selected category: ${link.querySelector('span').textContent}`);
+                });
+            });
+
+            // Upload Form Submission
+            const uploadForm = document.getElementById('uploadForm');
+            if (uploadForm) {
+                uploadForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+
+                    // Basic form validation
+                    const title = document.getElementById('uploadTitle').value;
+                    const category = document.getElementById('uploadCategory').value;
+                    const content = document.getElementById('uploadContent').value;
+
+                    if (!title || !category || !content) {
+                        alert('Please fill in all required fields.');
+                        return;
+                    }
+
+                    // In a real implementation, this would send data to a server
+                    console.log('Form submitted:', {
+                        title,
+                        category,
+                        content
+                    });
+
+                    // Show success message
+                    alert('Thank you for your submission! Your news/article has been submitted for review. We will contact you if more information is needed.');
+
+                    // Reset form
+                    uploadForm.reset();
+                });
+            }
+
+            // Newsletter Form Submission
+            const newsletterForm = document.getElementById('newsletterForm');
+            if (newsletterForm) {
+                newsletterForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const email = this.querySelector('input[type="email"]').value;
+
+                    // Basic email validation
+                    if (!email || !email.includes('@')) {
+                        alert('Please enter a valid email address.');
+                        return;
+                    }
+
+                    // In a real implementation, this would send data to a server
+                    console.log('Newsletter subscription:', email);
+
+                    // Show success message
+                    alert('Thank you for subscribing to our newsletter! You will receive our next update.');
+
+                    // Reset form
+                    newsletterForm.reset();
+                });
+            }
+
+            // File Upload Preview
+            const fileUpload = document.getElementById('uploadFile');
+            if (fileUpload) {
+                fileUpload.addEventListener('change', function () {
+                    const file = this.files[0];
+                    if (file) {
+                        // Check file size (max 10MB)
+                        if (file.size > 10 * 1024 * 1024) {
+                            alert('File size exceeds 10MB limit. Please choose a smaller file.');
+                            this.value = '';
+                            return;
+                        }
+
+                        // Check file type
+                        const allowedTypes = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+                        if (!allowedTypes.includes(file.type)) {
+                            alert('File type not supported. Please upload a PDF, JPG, PNG, or DOC file.');
+                            this.value = '';
+                            return;
+                        }
+
+                        console.log('File selected:', file.name, `(${(file.size / 1024 / 1024).toFixed(2)} MB)`);
+                    }
+                });
+            }
+
+            // Pagination
+            const prevPageBtn = document.getElementById('prevPage');
+            const nextPageBtn = document.getElementById('nextPage');
+            const pageButtons = document.querySelectorAll('.page-btn:not(.disabled)');
+
+            if (prevPageBtn) {
+                prevPageBtn.addEventListener('click', () => {
+                    // In a real implementation, this would load previous page
+                    console.log('Load previous page');
+                });
+            }
+
+            if (nextPageBtn) {
+                nextPageBtn.addEventListener('click', () => {
+                    // In a real implementation, this would load next page
+                    console.log('Load next page');
+                });
+            }
+
+            pageButtons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    if (!this.classList.contains('active')) {
+                        document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+
+                        // In a real implementation, this would load the selected page
+                        console.log(`Load page ${this.textContent}`);
+                    }
+                });
+            });
+
+            // Add smooth scroll animation for news cards
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.news-card').forEach(card => {
+                observer.observe(card);
+            });
+
+            // Initialize filter on load
+            filterNews();
+        });
+    </script>
+</body>
+
+</html>
