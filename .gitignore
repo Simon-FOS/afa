@@ -1,2 +1,11 @@
 node_modules/
+dist/
+build/
+coverage
 .env
+.DS_Store
+database/
+databases/
+
+*.sqlite
+*.sqlite3
