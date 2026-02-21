@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <meta name="description"
         content="A lightweight **Express.js framework** with **Sequelize**, **automatic module generation**, **authentication**, and a **CLI** for easy development.">
-    <meta name="keywords"
-        content="nexus, nexusjs, framework">
+    <meta name="keywords" content="nexus, nexusjs, framework">
     <meta name="author" content="nathius262">
     <meta property="og:title" content="NexusJs | {{pageTitle}}">
     <meta property="og:description"
@@ -23,7 +22,7 @@
     <meta name="twitter:image" content={{pageLogo}} id="twitterImage">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>NexusJs | {{pageTitle}}</title>
+    <title>Augustinian Federation of Africa (AFA) | {{pageTitle}}</title>
 
     <link rel="icon" href="/assets/img/logo.jpg">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600&amp;display=swap" rel="stylesheet">
@@ -42,17 +41,25 @@
         crossorigin="anonymous" referrerpolicy="no-referrer">
 
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+
+
     <link href="/assets/css/authenticate.css" rel="stylesheet">
     <link href="/assets/css/style.css" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    
+
 
 </head>
 
 <body>
-    
+
 
     <!--============ROOT SECTION==============-->
     <section id="root" class=" position-relative overflow-x-hidden">
@@ -61,7 +68,7 @@
         <!--=========HEADER END===========-->
 
         <!--=========MAIN BEGIN===========-->
-        
+
         {{{body}}}
 
         <!--=========MAIN END===========-->
@@ -73,8 +80,120 @@
     </section>
     <!--============ROOT SECTION END==============-->
 
-   
+
     <script type="module" src="/assets/js/app.js"></script>
+
+    <script src="/assets/js/main.js"></script>
+    <script>
+        // Home page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function () {
+            // Simple animation for mission icons
+            const missionIcons = document.querySelectorAll('.mission-icon');
+            missionIcons.forEach((icon, index) => {
+                icon.style.animationDelay = `${index * 0.2}s`;
+                icon.classList.add('animate-icon');
+            });
+
+            // Update current year in footer
+            document.querySelector('.footer-bottom p').innerHTML = `&copy; ${new Date().getFullYear()} Augustinian Federation for Africa. All rights reserved.`;
+        });
+
+
+
+        // Hero Slideshow Functionality
+        document.addEventListener('DOMContentLoaded', function () {
+            const slides = document.querySelectorAll('.slide');
+            const indicators = document.querySelectorAll('.indicator');
+            const prevBtn = document.querySelector('.slide-nav.prev');
+            const nextBtn = document.querySelector('.slide-nav.next');
+            let currentSlide = 0;
+            let slideInterval;
+            const slideDuration = 4000; // 4 seconds
+
+            // Function to show a specific slide
+            function showSlide(index) {
+                // Remove active class from all slides and indicators
+                slides.forEach(slide => slide.classList.remove('active'));
+                indicators.forEach(indicator => indicator.classList.remove('active'));
+
+                // Handle wrap-around
+                if (index >= slides.length) {
+                    currentSlide = 0;
+                } else if (index < 0) {
+                    currentSlide = slides.length - 1;
+                } else {
+                    currentSlide = index;
+                }
+
+                // Add active class to current slide and indicator
+                slides[currentSlide].classList.add('active');
+                indicators[currentSlide].classList.add('active');
+            }
+
+            // Function to start automatic slideshow
+            function startSlideshow() {
+                slideInterval = setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, slideDuration);
+            }
+
+            // Function to stop automatic slideshow
+            function stopSlideshow() {
+                clearInterval(slideInterval);
+            }
+
+            // Event listeners for indicators
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    stopSlideshow();
+                    showSlide(index);
+                    startSlideshow();
+                });
+            });
+
+            // Event listeners for navigation buttons
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    stopSlideshow();
+                    showSlide(currentSlide - 1);
+                    startSlideshow();
+                });
+            }
+
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    stopSlideshow();
+                    showSlide(currentSlide + 1);
+                    startSlideshow();
+                });
+            }
+
+            // Pause slideshow on hover (optional)
+            const heroSection = document.querySelector('.hero');
+            if (heroSection) {
+                heroSection.addEventListener('mouseenter', stopSlideshow);
+                heroSection.addEventListener('mouseleave', startSlideshow);
+
+                // For touch devices
+                heroSection.addEventListener('touchstart', stopSlideshow);
+                heroSection.addEventListener('touchend', startSlideshow);
+            }
+
+            // Initialize the slideshow
+            showSlide(0);
+            startSlideshow();
+
+            // Clean up intervals when page is hidden (to save resources)
+            document.addEventListener('visibilitychange', function () {
+                if (document.hidden) {
+                    stopSlideshow();
+                } else {
+                    startSlideshow();
+                }
+            });
+        });
+
+    </script>
 
     <script>
         //global script
@@ -96,7 +215,7 @@
                     window.location.href = redirectTo;
                 }
                 //add logic to prevent reload
-                else if (redirectTo === false){}
+                else if (redirectTo === false) { }
                 else {
                     // Reload the page if there's no redirect
                     window.location.reload();

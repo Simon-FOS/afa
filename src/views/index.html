@@ -1,9 +1,182 @@
-<section class="mt-5">
-    <a class="button" href="https://github.com/Nathius262/nexusjs" target="_blank">View on GitHub</a>
-    <a class="button" href="https://www.npmjs.com/package/@nathius262/nexusjs" target="_blank">View on NPM</a>
+<style>
+    /* Page-specific styles */
+    :root {
+        --font-primary: 'Open Sans', sans-serif;
+        --font-secondary: 'Merriweather', serif;
+    }
+
+    body {
+        font-family: var(--font-primary);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        font-family: var(--font-secondary);
+    }
+</style>
+
+
+
+<!-- Hero Section -->
+<section class="hero">
+    <!-- Image Slideshow Container -->
+    <div class="hero-slideshow">
+        <div class="slide active" style="background-image: url('/assets/images/afa1.jpg');"></div>
+        <div class="slide" style="background-image: url('/assets/images/afa2.jpeg');"></div>
+        <div class="slide" style="background-image: url('/assets/images/afa3.jpg');"></div>
+        <div class="slide" style="background-image: url('/assets/images/afa4.jpg');"></div>
+        <div class="slide" style="background-image: url('/assets/images/x2.jpg');"></div>
+
+        <!-- Optional: Slide Indicators/Dots -->
+        <div class="slide-indicators">
+            <button class="indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+            <button class="indicator" data-slide="1" aria-label="Go to slide 2"></button>
+            <button class="indicator" data-slide="2" aria-label="Go to slide 3"></button>
+            <button class="indicator" data-slide="3" aria-label="Go to slide 4"></button>
+            <button class="indicator" data-slide="4" aria-label="Go to slide 5"></button>
+        </div>
+
+        <!-- Optional: Navigation Arrows -->
+        <button class="slide-nav prev" aria-label="Previous image">&#10094;</button>
+        <button class="slide-nav next" aria-label="Next image">&#10095;</button>
+    </div>
+
+    <div class="container">
+        <div class="hero-content">
+            <h1 class="hero-title">Augustinian Federation of Africa</h1>
+            <p class="hero-subtitle">Uniting the Augustinian Family across the African continent in faith, service,
+                and solidarity</p>
+            <div class="hero-buttons">
+                <a href="about.html" class="btn btn-primary">Learn More</a>
+                <a href="events.html" class="btn btn-outline">Upcoming Events</a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-overlay"></div>
 </section>
 
-<section class="my-4">
-    <a class="button" href="/auth/login">Login</a>
-    <a class="button" href="/auth/register">Register</a>
+<!-- Mission Statement -->
+<section class="section mission-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h2 class="section-title">Our Mission</h2>
+                <p class="mission-text">
+                    To build a network of members of the Augustinian Family on the continent of Africa. To promote
+                    the spirituality and teachings of St Augustine through shared ideas, missionary activities,
+                    programmes and healthy collaboration among members in the continent of Africa.
+                </p>
+                <p class="mission-text">
+                    Guided by the teachings of St. Augustine, we work to address contemporary challenges facing our
+                    communities while preserving our rich spiritual heritage.
+                </p>
+                <a href="about.html" class="btn btn-primary">Read Our Story</a>
+            </div>
+            <div class="col-md-6">
+                <div class="mission-image-wrapper">
+                    <img src="/assets/images/mission.jpg" alt="Augustinian Mission in Africa"
+                        class="mission-main-image">
+                    <div class="mission-icons-overlay">
+                        <div class="mission-icon">
+                            <i class="fas fa-hands-praying"></i>
+                        </div>
+                        <div class="mission-icon">
+                            <i class="fas fa-globe-africa"></i>
+                        </div>
+                        <div class="mission-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Preview Sections -->
+<section class="section preview-section">
+    <div class="container">
+        <h2 class="section-title">Latest Updates</h2>
+
+        <!-- Section Headers Row -->
+        <div class="preview-headers-row">
+            <div class="preview-header">
+                <h3><i class="fas fa-bullhorn"></i> Announcements</h3>
+                <a href="news.html#announcements" class="view-all">View All</a>
+            </div>
+            <div class="preview-header">
+                <h3><i class="fas fa-calendar-alt"></i> Upcoming Events</h3>
+                <a href="events.html" class="view-all">View All</a>
+            </div>
+            <div class="preview-header">
+                <h3><i class="fas fa-newspaper"></i> Recent News</h3>
+                <a href="news.html" class="view-all">View All</a>
+            </div>
+        </div>
+
+        <!-- Cards Row -->
+        <div class="row">
+            <!-- Announcements Column -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">General Assembly</h4>
+                        <p class="card-date">March 02, 2026</p>
+                        <p class="card-text">Notice for all AFA members regarding the upcoming General
+                            Assembly scheduled for March 2026 in Accra, Ghana.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Upcoming Events Column -->
+            <div class="col-md-4">
+
+
+            </div>
+
+            <!-- Recent News Column -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">AFA Quarterly Newsletter</h4>
+                        <p class="card-date">Q1 2026</p>
+                        <p class="card-text">Read about our latest initiatives, community stories, and spiritual
+                            reflections from across Africa.</p>
+                        <a href="//assets/resources/AFA NEWS ENGLISH -  2025.pdf" target="_blank"
+                            class="btn btn-outline btn-sm">Download PDF</a>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title"> Education Conference</h4>
+                        <p class="card-date">February 15, 2026</p>
+                        <p class="card-text">AFA organizes second Education Conference for all teachers within the
+                            AFA region.</p>
+                        <a href="#" class="read-more">Read More →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<section class="section cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2>Join Us in Our Mission</h2>
+            <p>Your support helps us continue our work across Africa. Together, we can make a difference in
+                communities through faith, education, and sustainable development.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-secondary btn-lg">Donate Now</a>
+                <a href="contact.html" class="btn btn-outline btn-lg">Get Involved</a>
+            </div>
+        </div>
+    </div>
 </section>
