@@ -1,0 +1,54 @@
+<!-- Navigation Header -->
+<header class="header">
+    <div class="container">
+        <nav class="navbar">
+            <a href="/" class="logo">
+                <img src="/assets/images/logo1.png" alt="Augustinian Federation for Africa" class="logo-img">
+                <span class="logo-text">
+                    <span class="logo-main">AUGUSTINIAN FEDERATION</span>
+                    <span class="logo-sub">OF AFRICA</span>
+                </span>
+            </a>
+
+
+
+            <button class="navbar-toggle" id="navbarToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <ul class="navbar-menu" id="navbarMenu">
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/executive-board">Executive Board</a></li>
+                <li><a href="/event">Events</a></li>
+                <li><a href="/news">News</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="#" class="btn btn-secondary">Donate</a></li>
+                <li>
+                    <div class="language-selector d-flex align-items-center gap-2">
+                        <a href="#" onclick="setLanguage('en')" title="English">
+                            <img src="https://flagcdn.com/w20/gb.png" alt="English" width="20">
+                        </a>
+
+                        <a href="#" onclick="setLanguage('fr')" title="Français">
+                            <img src="https://flagcdn.com/w20/fr.png" alt="Français" width="20">
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<script>
+    function setLanguage(lang) {
+        if (lang === 'en') {
+            // Reset to original language
+            document.cookie = "googtrans=; path=/; domain=" + window.location.hostname;
+        } else {
+            document.cookie = "googtrans=/en/" + lang + "; path=/; domain=" + window.location.hostname;
+        }
+
+        location.reload();
+    }
+</script>
