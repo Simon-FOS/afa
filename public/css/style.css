@@ -61,6 +61,22 @@ body {
     padding-top: 80px;
 }
 
+.goog-te-banner-frame.skiptranslate {
+    display: none !important;
+}
+
+.goog-te-gadget {
+    display: none !important;
+}
+
+body {
+    top: 0px !important;
+}
+
+iframe.skiptranslate {
+    display: none !important;
+}
+
 /* ========== TYPOGRAPHY ========== */
 h1,
 h2,
