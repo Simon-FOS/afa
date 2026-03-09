@@ -27,7 +27,7 @@
         <div class="slide" style="background-image: url('/assets/images/afa2.jpeg');"></div>
         <div class="slide" style="background-image: url('/assets/images/afa3.jpg');"></div>
         <div class="slide" style="background-image: url('/assets/images/afa4.jpg');"></div>
-        <div class="slide" style="background-image: url('/assets/images/x2.jpg');"></div>
+        <div class="slide" style="background-image: url('/assets/images/ppl1.jpg');"></div>
 
         <!-- Optional: Slide Indicators/Dots -->
         <div class="slide-indicators">
@@ -119,18 +119,22 @@
         <!-- Cards Row -->
         <div class="row">
             <!-- Announcements Column -->
+            {{#each announcements}}
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title">General Assembly</h4>
-                        <p class="card-date">March 02, 2026</p>
-                        <p class="card-text">Notice for all AFA members regarding the upcoming General
-                            Assembly scheduled for March 2026 in Accra, Ghana.</p>
-                        <a href="#" class="read-more">Read More →</a>
+                        <div class="card-image-top">
+                            <img src="{{this.image_url}}" alt="Announcement Image"
+                                class="w-100 h-100 object-cover rounded card-img-top">
+                        </div>
+                        <h4 class="card-title">{{this.title}}</h4>
+                        <p class="card-date">{{formatDate this.createdAt}}</p>
+                        <p class="card-text">{{this.content}}</p>
                     </div>
                 </div>
-
             </div>
+            {{/each}}
+
 
             <!-- Upcoming Events Column -->
             <div class="col-md-4">

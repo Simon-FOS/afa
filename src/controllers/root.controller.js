@@ -1,5 +1,6 @@
 import { check, validationResult } from 'express-validator';
 import dotenv from 'dotenv';
+import { findAll as get_all_announcement } from '../modules/announcement/services/admin.Announcement.service.js';
 
 // Derive the equivalent of __dirname
 import { fileURLToPath } from 'url';
@@ -17,11 +18,12 @@ const page_logo = process.env.PAGELOGO
 export const index_view = async (req, res) => {
     try {
 
-
+        const get_all_announcement_result = await get_all_announcement({ limit: 5, offset: 0 });
         //console.log(result.rows)
         res.render('index', {
             pageTitle: "Home",
-            pageLogo: page_logo
+            pageLogo: page_logo,
+            announcements: get_all_announcement_result.announcements
         });
     } catch (err) {
         res.status(500).render('./errors/500', { message: 'Internal Server Error', error: err.message });
