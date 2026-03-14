@@ -9,7 +9,6 @@ const router = Router();
 router.get('/', rootController.index_view);
 router.get('/about', rootController.about_view);
 router.get('/contact', rootController.contact_view);
-router.get('/event', rootController.event_view);
 router.get('/executive-board', rootController.executive_board_view);
 router.get('/news', rootController.news_view);
 router.get('/admin', dashboard_view)

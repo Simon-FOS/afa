@@ -56,20 +56,37 @@ export default function registerHelpers(handlebars) {
     if (!options.data.root) options.data.root = {};
     options.data.root[varName] = varValue;
   });
-  handlebars.registerHelper('contains', function(categoryId, categoryArray) {
+  handlebars.registerHelper('contains', function (categoryId, categoryArray) {
     if (!categoryArray || !Array.isArray(categoryArray)) return false;
-    
-    return categoryArray.some(function(category) {
-        return category.id === categoryId;
+
+    return categoryArray.some(function (category) {
+      return category.id === categoryId;
     });
   });
-  handlebars.registerHelper('stripTags', function(html) {
+  handlebars.registerHelper('stripTags', function (html) {
     return html.replace(/<[^>]*>/g, '').substring(0, 100) + '...';
   });
-  handlebars.registerHelper('formatDate', function(date) {
+  handlebars.registerHelper('formatDate', function (date) {
     return new Date(date).toLocaleDateString();
   });
-  handlebars.registerHelper('json', function(context) {
+
+  // Helper function to get month name or day name or year from a date
+  handlebars.registerHelper('formatDatePart', function (date, part) {
+    const options = {};
+    switch (part) {
+      case 'month':
+        options.month = 'long';
+        break;
+      case 'day':
+        options.day = 'numeric';
+        break;
+      case 'year':
+        options.year = 'numeric';
+        break;
+    }
+    return new Date(date).toLocaleDateString(undefined, options);
+  });
+  handlebars.registerHelper('json', function (context) {
     return JSON.stringify(context);
   });
 }

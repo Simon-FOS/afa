@@ -1,0 +1,127 @@
+<!-- Page Header -->
+<section class="page-header">
+  <div class="container">
+    <div class="page-header-content">
+      <h1 class="page-title">{{event.title}}</h1>
+      <p class="page-subtitle">
+        Discover the details of this upcoming AFA event.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Event Detail Section -->
+<section class="event-detail-section" style="padding:60px 0;">
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" style="margin-bottom:30px;">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/event">Events</a></li>
+        <li class="breadcrumb-item active">{{event.title}}</li>
+      </ol>
+    </nav>
+
+    <div class="row g-4">
+
+      <!-- Main Content -->
+      <div class="col-lg-8">
+
+        <div class="event-card">
+
+          <!-- Event Image -->
+          <div class="event-image" style="height:350px;">
+            <img src="{{event.image_url}}" alt="{{event.title}}" style="width:100%; height:100%; object-fit:cover;">
+          </div>
+
+          <div class="event-content">
+
+            <span class="event-category {{event.tag}}">
+              {{event.tag}}
+            </span>
+
+            <h2 class="event-title">{{event.title}}</h2>
+
+            <!-- Event Meta -->
+            <div class="event-meta">
+              <div class="meta-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>{{event.date}}</span>
+              </div>
+
+              <div class="meta-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>{{event.location}}</span>
+              </div>
+
+              <div class="meta-item">
+                <i class="fas fa-tag"></i>
+                <span>{{event.tag}}</span>
+              </div>
+            </div>
+
+            <!-- Event Description -->
+            <div class="event-description">
+              {{event.content}}
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Sidebar -->
+      <div class="col-lg-4">
+
+        <div class="event-card">
+
+          <div class="event-content">
+
+            <h3 style="margin-bottom:20px;">
+              Event Information
+            </h3>
+
+            <div class="meta-item" style="margin-bottom:10px;">
+              <i class="fas fa-calendar"></i>
+              <span><strong>Date:</strong> {{event.date}}</span>
+            </div>
+
+            <div class="meta-item" style="margin-bottom:10px;">
+              <i class="fas fa-map-marker-alt"></i>
+              <span><strong>Location:</strong> {{event.location}}</span>
+            </div>
+
+            <div class="meta-item" style="margin-bottom:10px;">
+              <i class="fas fa-tag"></i>
+              <span><strong>Category:</strong> {{event.tag}}</span>
+            </div>
+
+            <div class="meta-item" style="margin-bottom:20px;">
+              <i class="fas fa-clock"></i>
+              <span><strong>Time:</strong> {{event.time}}</span>
+            </div>
+
+            <!-- Buttons -->
+            <div class="event-actions" style="flex-direction:column; gap:12px;">
+
+              <a href="#" class="btn btn-primary btn-lg">
+                Register for Event
+              </a>
+
+              <a href="/event" class="btn btn-outline">
+                ← Back to Events
+              </a>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

@@ -137,10 +137,21 @@
 
 
             <!-- Upcoming Events Column -->
+            {{#each events}}
             <div class="col-md-4">
-
-
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-image-top">
+                            <img src="{{this.image_url}}" alt="Event Image"
+                                class="w-100 h-100 object-cover rounded card-img-top">
+                        </div>
+                        <h4 class="card-title">{{this.title}}</h4>
+                        <p class="card-date">{{formatDate this.createdAt}}</p>
+                        <p class="card-text">{{this.content}}</p>
+                    </div>
+                </div>
             </div>
+            {{/each}}
 
             <!-- Recent News Column -->
             <div class="col-md-4">

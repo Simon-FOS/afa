@@ -1,6 +1,6 @@
-import { check, validationResult } from 'express-validator';
 import dotenv from 'dotenv';
 import { findAll as get_all_announcement } from '../modules/announcement/services/admin.Announcement.service.js';
+import { findAll as get_all_event } from '../modules/event/services/admin.Event.service.js';
 
 // Derive the equivalent of __dirname
 import { fileURLToPath } from 'url';
@@ -18,12 +18,14 @@ const page_logo = process.env.PAGELOGO
 export const index_view = async (req, res) => {
     try {
 
-        const get_all_announcement_result = await get_all_announcement({ limit: 5, offset: 0 });
+        const get_all_announcement_result = await get_all_announcement({ limit: 1, offset: 0 });
+        const get_all_event_result = await get_all_event({ limit: 1, offset: 0 });
         //console.log(result.rows)
         res.render('index', {
             pageTitle: "Home",
             pageLogo: page_logo,
-            announcements: get_all_announcement_result.announcements
+            announcements: get_all_announcement_result.announcements,
+            events: get_all_event_result.events
         });
     } catch (err) {
         res.status(500).render('./errors/500', { message: 'Internal Server Error', error: err.message });
@@ -47,18 +49,6 @@ export const contact_view = async (req, res) => {
     try {
         res.render('contact', {
             pageTitle: "Contact",
-            pageLogo: page_logo
-        });
-    } catch (err) {
-        res.status(500).render('./errors/500', { message: 'Internal Server Error', error: err.message });
-    }
-};
-
-// Event Page controller
-export const event_view = async (req, res) => {
-    try {
-        res.render('event', {
-            pageTitle: "Event",
             pageLogo: page_logo
         });
     } catch (err) {
