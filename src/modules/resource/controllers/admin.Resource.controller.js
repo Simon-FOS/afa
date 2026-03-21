@@ -1,4 +1,4 @@
-import * as service from '../services/admin.resource.service.js';
+import * as service from '../services/admin.Resource.service.js';
 
 export const findAll = async (req, res) => {
   const { page, limit, offset } = req.pagination
