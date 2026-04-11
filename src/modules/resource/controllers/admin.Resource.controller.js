@@ -41,6 +41,11 @@ export const create = async (req, res) => {
       req.body.file_url = req.files['file_url'][0].path; // Store the path of the uploaded file
     }
 
+    //handle french files
+    if (req.files && req.files['french_file_url'] && req.files['french_file_url'][0]) {
+      req.body.french_file_url = req.files['french_file_url'][0].path; // Store the path of the uploaded file
+    }
+
     const data = await service.create(req.body);
     res.status(201).json({ success: true, redirectTo: "/admin/resource", message: "Created successfully" });
   } catch (err) {

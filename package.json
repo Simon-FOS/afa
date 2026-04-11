@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "@nathius262/nexusjs": "^0.0.22",
+    "axios": "^1.15.0",
     "inquirer": "^13.3.0",
     "multer": "^2.1.1",
     "multer-storage-cloudinary": "^4.0.0",

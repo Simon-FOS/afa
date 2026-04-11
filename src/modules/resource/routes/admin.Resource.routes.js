@@ -12,16 +12,16 @@ router.use(useModuleViews('resource'));
 // Admin view routes
 router.route('/')
   .get(withPagination(10), controller.findAll)
-  .post(setSection('resources'), upload.fields([{ name: 'file_url', maxCount: 1 }]), controller.create);
+  .post(setSection('resources'), upload.fields([{ name: 'file_url', maxCount: 1 }, { name: 'french_file_url', maxCount: 1 }]), controller.create);
 
 
 router.route('/create')
   .get(controller.renderCreate)
-  .post(setSection('resources'), upload.fields([{ name: 'file_url', maxCount: 1 }]), controller.create);
+  .post(setSection('resources'), upload.fields([{ name: 'file_url', maxCount: 1 }, { name: 'french_file_url', maxCount: 1 }]), controller.create);
 
 router.route('/:id')
   .get(controller.findById)
-  .put(setSection('resources'), upload.fields([{ name: 'file_url', maxCount: 1 }]), controller.update)
+  .put(setSection('resources'), upload.fields([{ name: 'file_url', maxCount: 1 }, { name: 'french_file_url', maxCount: 1 }]), controller.update)
   .delete(controller.destroy);
 
 export default router;

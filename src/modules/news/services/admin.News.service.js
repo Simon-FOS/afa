@@ -8,7 +8,7 @@ export const findAll = async ({ limit, offset }) => {
       limit,
       offset,
       distinct: true,
-      order: [['createdAt', 'DESC'], ['updatedAt', 'DESC']],
+      order: [['created_at', 'DESC'], ['updated_at', 'DESC']],
     })
     return {
       news,

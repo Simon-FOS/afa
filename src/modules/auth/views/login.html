@@ -8,12 +8,12 @@
     <!-- Role Toggle -->
     <div class="btn-group mb-4 w-100 d-flex justify-content-center" role="group" aria-label="Role toggle">
       <button type="button" class="btn btn-outline-primary role-btn active" data-role="admin">Admin</button>
-      <button type="button" class="btn btn-outline-primary role-btn" data-role="user">User</button>
-      <button type="button" class="btn btn-outline-primary role-btn" data-role="staff">Staff</button>
+      <!-- <button type="button" class="btn btn-outline-primary role-btn" data-role="user">User</button>
+      <button type="button" class="btn btn-outline-primary role-btn" data-role="staff">Staff</button> -->
     </div>
 
     <!-- Heading -->
-    <h2 class="text-center text-primary">Welcome Back <span id="roleHeading">Admin</span>!</h2>
+    <h2 class="text-center text-primary">Welcome <span id="roleHeading">Admin</span>!</h2>
 
     <!-- Form -->
     <form id="authForm" class="needs-validation" action="/auth/admin/login" method="POST" novalidate>
@@ -21,8 +21,12 @@
       <div class="invalid-feedback">Email is required</div>
 
       <div class="form-group mb-3" style="position: relative;">
-        <input type="password" name="password" class="form-control-user" placeholder="Password" required>
-        <i class="fa-regular fa-eye"></i>
+        <input type="password" name="password" id="password" class="form-control-user" placeholder="Password" required>
+
+        <i class="fa-regular fa-eye" id="togglePassword"
+          style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+        </i>
+
         <div class="invalid-feedback">Password is required</div>
       </div>
 

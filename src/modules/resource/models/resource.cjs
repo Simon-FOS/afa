@@ -23,6 +23,10 @@ module.exports = (sequelize, DataTypes) => {
     file_url: {
       type: DataTypes.STRING
     },
+    french_file_url: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   }, {
     sequelize,
     modelName: 'Resource',
