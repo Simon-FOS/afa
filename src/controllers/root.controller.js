@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import { findAll as get_all_announcement } from '../modules/announcement/services/admin.Announcement.service.js';
 import { findAll as get_all_event } from '../modules/event/services/admin.Event.service.js';
+import { findAll as resouceFindAll } from '../modules/resource/services/admin.Resource.service.js'
 
 // Derive the equivalent of __dirname
 import { fileURLToPath } from 'url';
@@ -20,10 +21,12 @@ export const index_view = async (req, res) => {
 
         const get_all_announcement_result = await get_all_announcement({ limit: 1, offset: 0 });
         const get_all_event_result = await get_all_event({ limit: 1, offset: 0 });
+        const resources = await resouceFindAll({ limit: 5, offset: 0 });
         //console.log(result.rows)
         res.render('index', {
             pageTitle: "Home",
             pageLogo: page_logo,
+            resources: resources.resources,
             announcements: get_all_announcement_result.announcements,
             events: get_all_event_result.events
         });

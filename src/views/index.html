@@ -17,6 +17,67 @@
     h6 {
         font-family: var(--font-secondary);
     }
+
+    /* PDF Resources */
+    .pdf-resources {
+        margin-bottom: var(--space-lg);
+    }
+
+    .pdf-item {
+        display: flex;
+        align-items: center;
+        padding: var(--space-md) 0;
+        border-bottom: 1px solid var(--color-gray-200);
+    }
+
+    .pdf-item:last-child {
+        border-bottom: none;
+    }
+
+    .pdf-icon {
+        font-size: 2rem;
+        color: var(--color-secondary);
+        margin-right: var(--space-md);
+        flex-shrink: 0;
+    }
+
+    .pdf-info {
+        flex-grow: 1;
+    }
+
+    .pdf-title {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: var(--color-gray-900);
+    }
+
+    .pdf-meta {
+        display: flex;
+        gap: var(--space-md);
+        font-size: 0.85rem;
+        color: var(--color-gray-600);
+        margin-bottom: 0.5rem;
+    }
+
+    .download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--color-primary);
+        color: var(--color-white);
+        padding: 0.5rem 1rem;
+        border-radius: var(--radius-sm);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all var(--transition-base);
+    }
+
+    .download-btn:hover {
+        background: var(--color-secondary);
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-sm);
+    }
 </style>
 
 <!-- Hero Section -->
@@ -155,25 +216,42 @@
 
             <!-- Recent News Column -->
             <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">AFA Quarterly Newsletter</h4>
-                        <p class="card-date">Q1 2026</p>
-                        <p class="card-text">Read about our latest initiatives, community stories, and spiritual
-                            reflections from across Africa.</p>
-                        <a href="/assets/resources/AFA NEWS ENGLISH -  2025.pdf" target="_blank"
-                            class="btn btn-outline btn-sm">Download PDF</a>
+                <!-- Resources Sidebar -->
+                <aside class="resources-sidebar">
+
+                    <!-- PDF Resources -->
+                    <div class="pdf-resources">
+                        <h3 class="sidebar-title"><i class="fas fa-file-pdf"></i> Latest Resources</h3>
+                        {{#each resources}}
+                        <div class="pdf-item">
+                            <div class="pdf-icon">
+                                <i class="fas fa-file-pdf"></i>
+                            </div>
+                            <div class="pdf-info">
+                                <h4 class="pdf-title">{{this.title}}</h4>
+                                <div class="pdf-meta">
+                                    <span><i class="far fa-calendar"></i> {{formatDatePart this.createdAt "month"}}
+                                        {{formatDatePart
+                                        this.createdAt "year"}}</span>
+                                </div>
+                                <div class="language-buttons">
+                                    <a href="{{this.file_url}}" class="download-btn english">
+                                        <i class="fas fa-download"></i> English
+                                    </a>
+                                    <a href="{{this.file_url}}" class="download-btn french">
+                                        <i class="fas fa-download"></i> French
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+
+
                     </div>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title"> Education Conference</h4>
-                        <p class="card-date">February 15, 2026</p>
-                        <p class="card-text">AFA organizes second Education Conference for all teachers within the
-                            AFA region.</p>
-                        <a href="#" class="read-more">Read More →</a>
-                    </div>
-                </div>
+
+
+                </aside>
+
             </div>
         </div>
     </div>

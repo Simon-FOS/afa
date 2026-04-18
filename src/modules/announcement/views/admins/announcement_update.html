@@ -8,21 +8,50 @@
 
   <div class="card shadow-sm">
     <div class="card-body">
-      <form action="/admin/announcement/{{announcement.id}}" id="update-form" class="needs-validation" method="POST"
-        novalidate>
-        <input type="hidden" name="_method" value="PUT">
-
+      <form action="/admin/announcement/{{announcement.id}}" enctype="multipart/form-data" id="update-form"
+        class="needs-validation" method="POST" novalidate>
         <div class="row">
           <div class="col-md-6">
             <div class="mb-3">
-              <label for="name" class="form-label">Name</label>
-              <input type="text" name="name" class="form-control" id="name" value="{{announcement.name}}" required>
+              <label for="title" class="form-label">Title</label>
+              <input type="text" value="{{announcement.title}}" name="title" class="form-control" id="title"
+                placeholder="Enter title" required>
               <div class="invalid-feedback">
-                Please provide a valid name.
+                Please provide a valid title.
               </div>
             </div>
           </div>
           <!-- Add more form fields in columns as needed -->
+
+          <!--content-->
+          <div class="col-md-6">
+            <div class="mb-3">
+              <label for="content" class="form-label">Content</label>
+              <textarea name="content" class="form-control" id="content" placeholder="Enter content" rows="4"
+                required>{{announcement.content}}</textarea>
+              <div class="invalid-feedback">
+                Please provide a valid content.
+              </div>
+            </div>
+          </div>
+          <!--Image-->
+          <div class="col-md-6">
+            <div class="mb-3">
+              <div class="container">
+                <div class="row">
+                  <div class="col-md-4">
+                    <img src="{{announcement.image_url}}" alt="Current Image" class="img-thumbnail">
+                  </div>
+                </div>
+              </div>
+              <label for="image" class="form-label">Image File</label>
+              <input type="file" value="{{announcement.image_url}}" name="image_url" class="form-control" id="image"
+                accept="image/*">
+              <div class="invalid-feedback">
+                Please provide a valid image file.
+              </div>
+            </div>
+          </div>
         </div>
 
         <ul id="error" class="text-danger col-12"></ul>
@@ -31,9 +60,10 @@
           <span class="sr-only">Loading...</span>
         </div>
         <progress id="progressBar" style="display: none;"></progress>
+
         <div class="d-flex gap-2 mt-4">
           <button type="submit" class="btn btn-primary">
-            <i class="fas fa-save me-2"></i>Update Announcement
+            <i class="fas fa-plus me-2"></i>Update Announcement
           </button>
           <a href="/admin/announcement" class="btn btn-outline-secondary">Cancel</a>
         </div>
@@ -42,9 +72,9 @@
   </div>
 </div>
 
-<script src="/assets/js/form-handler.js"></script>
+<!-- <script src="/assets/js/form-handler.js"></script> -->
 
 <!-- 
     always use this when you intend on uploading images or files and comment the above script 
   -->
-<!-- <script type="module" src="/assets/js/uploader.js"></script> -->
+<script type="module" src="/assets/js/uploader.js"></script>

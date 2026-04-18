@@ -1,4 +1,6 @@
 import * as service from '../services/admin.Event.service.js';
+import { getPublicIdFromUrl } from '../../../utils/utils.js';
+import cloudinary from '../../../config/cloudinaryConfig.js';
 
 export const findAll = async (req, res) => {
   const { page, limit, offset } = req.pagination
@@ -51,7 +53,27 @@ export const create = async (req, res) => {
 
 export const update = async (req, res) => {
   try {
-    const data = await service.update(req.params.id, req.body);
+    const imageUrl = req.files && req.files['image_url'] && req.files['image_url'][0] ? req.files['image_url'][0].path : undefined;
+    const data = { ...req.body, image_url: imageUrl };
+
+    const item = await service.findById(req.params.id);
+    if (!item) return res.status(404).json({ success: false, message: 'Event not found' });
+
+    if (data.image_url === undefined || data.image_url === null || data.image_url === '') {
+      data.image_url = item.image_url; // Remove image_url from data if it's 'undefined' or not provided
+    }
+
+    if (data.image_url && item.image_url && data.image_url !== item.image_url) {
+      // If there's a new image_url and it's different from the existing one, delete the old image from Cloudinary
+      const publicId = getPublicIdFromUrl(item.image_url);
+      try {
+        await cloudinary.uploader.destroy(publicId);
+      } catch (err) {
+        console.log('Error deleting image from Cloudinary:', err);
+        throw new Error('Error deleting old image from Cloudinary: ' + err.message);
+      }
+    }
+    const update = await service.update(req.params.id, data);
     res.status(200).json({ success: true, data, redirectTo: `/admin/event/${req.params.id}`, message: "Updated successfully" });
   } catch (err) {
     console.log(err)

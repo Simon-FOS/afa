@@ -6,7 +6,7 @@ dotenv.config();
 let transporter;
 
 // If in development, fake transporter (console log only)
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'test') {
   transporter = {
     sendMail: async (mailOptions) => {
       console.log('📧 Simulated Email Sent:');
